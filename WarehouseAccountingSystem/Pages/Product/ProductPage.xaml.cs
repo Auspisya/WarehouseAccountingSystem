@@ -69,7 +69,7 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProductAddPage());
         }
 
         private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
