@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="menshakova_inventoryControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="INNId" Type="Int32" Nullable="false" />
+    <Property Name="SNILSId" Type="Int32" Nullable="false" />
+    <Property Name="PassportId" Type="Int32" Nullable="false" />
+    <Property Name="PositionId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfEntry" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GenderId" Type="Int32" Nullable="false" />
+    <Property Name="MaterialLiabilityId" Type="Int32" Nullable="false" />
+    <Property Name="EmploymentHistoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EmploymentHistory" Relationship="Self.FK_Employee_EmploymentHistory" FromRole="Employee" ToRole="EmploymentHistory" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+    <NavigationProperty Name="INN" Relationship="Self.FK_Employee_INN" FromRole="Employee" ToRole="INN" />
+    <NavigationProperty Name="MaterialLiability" Relationship="Self.FK_Employee_MaterialLiability" FromRole="Employee" ToRole="MaterialLiability" />
+    <NavigationProperty Name="Passport" Relationship="Self.FK_Employee_Passport" FromRole="Employee" ToRole="Passport" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+    <NavigationProperty Name="SNILS" Relationship="Self.FK_Employee_SNILS" FromRole="Employee" ToRole="SNILS" />
+    <NavigationProperty Name="ProductArrival" Relationship="Self.FK_ProductArrival_Employee" FromRole="Employee" ToRole="ProductArrival" />
+    <NavigationProperty Name="ProductConsumption" Relationship="Self.FK_ProductConsumption_Employee" FromRole="Employee" ToRole="ProductConsumption" />
+  </EntityType>
+  <EntityType Name="EmploymentHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Series" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Speciality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_EmploymentHistory" FromRole="EmploymentHistory" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="INN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WhoRegistered" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_INN" FromRole="INN" ToRole="Employee" />
+    <NavigationProperty Name="Provider" Relationship="Self.FK_Provider_INN" FromRole="INN" ToRole="Provider" />
+    <NavigationProperty Name="Receiver" Relationship="Self.FK_Receiver_INN" FromRole="INN" ToRole="Receiver" />
+  </EntityType>
+  <EntityType Name="MaterialLiability">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_MaterialLiability" FromRole="MaterialLiability" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Series" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassportIssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DivisionCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlaceOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Passport" FromRole="Passport" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductGroupId" Type="Int32" Nullable="false" />
+    <Property Name="ProductClassId" Type="Int32" Nullable="false" />
+    <Property Name="UnitId" Type="Int32" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+    <Property Name="ManufactureDate" Type="DateTime" Precision="3" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <NavigationProperty Name="ProductClass" Relationship="Self.FK_Product_ProductClass1" FromRole="Product" ToRole="ProductClass" />
+    <NavigationProperty Name="ProductGroup" Relationship="Self.FK_Product_ProductGroup" FromRole="Product" ToRole="ProductGroup" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
+    <NavigationProperty Name="ProductArrival" Relationship="Self.FK_ProductArrival_Product" FromRole="Product" ToRole="ProductArrival" />
+    <NavigationProperty Name="ProductConsumption" Relationship="Self.FK_ProductConsumption_Product" FromRole="Product" ToRole="ProductConsumption" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProductArrival">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ProviderId" Type="Int32" Nullable="false" />
+    <Property Name="ProcurationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProcurationDateOfIssue" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeAcceptedId" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_ProductArrival_Employee" FromRole="ProductArrival" ToRole="Employee" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProductArrival_Product" FromRole="ProductArrival" ToRole="Product" />
+    <NavigationProperty Name="Provider" Relationship="Self.FK_ProductArrival_Provider" FromRole="ProductArrival" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="ProductClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductClass1" FromRole="ProductClass" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductConsumption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ReceiverId" Type="Int32" Nullable="false" />
+    <Property Name="ProcurationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProcurationDateOfIssue" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeePassedId" Type="Int32" Nullable="false" />
+    <Property Name="ConsumptionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_ProductConsumption_Employee" FromRole="ProductConsumption" ToRole="Employee" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_ProductConsumption_Product" FromRole="ProductConsumption" ToRole="Product" />
+    <NavigationProperty Name="Receiver" Relationship="Self.FK_ProductConsumption_Receiver" FromRole="ProductConsumption" ToRole="Receiver" />
+  </EntityType>
+  <EntityType Name="ProductGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductGroup" FromRole="ProductGroup" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INNId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="INN" Relationship="Self.FK_Provider_INN" FromRole="Provider" ToRole="INN" />
+    <NavigationProperty Name="ProductArrival" Relationship="Self.FK_ProductArrival_Provider" FromRole="Provider" ToRole="ProductArrival" />
+  </EntityType>
+  <EntityType Name="Receiver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INNId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="INN" Relationship="Self.FK_Receiver_INN" FromRole="Receiver" ToRole="INN" />
+    <NavigationProperty Name="ProductConsumption" Relationship="Self.FK_ProductConsumption_Receiver" FromRole="Receiver" ToRole="ProductConsumption" />
+  </EntityType>
+  <EntityType Name="SNILS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_SNILS" FromRole="SNILS" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Employee_EmploymentHistory">
+    <End Role="EmploymentHistory" Type="Self.EmploymentHistory" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmploymentHistory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="EmploymentHistoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_INN">
+    <End Role="INN" Type="Self.INN" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INN">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="INNId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_MaterialLiability">
+    <End Role="MaterialLiability" Type="Self.MaterialLiability" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialLiability">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="MaterialLiabilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Passport">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PassportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_SNILS">
+    <End Role="SNILS" Type="Self.SNILS" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SNILS">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="SNILSId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductArrival_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="ProductArrival" Type="Self.ProductArrival" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductArrival">
+        <PropertyRef Name="EmployeeAcceptedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductConsumption_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="ProductConsumption" Type="Self.ProductConsumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductConsumption">
+        <PropertyRef Name="EmployeePassedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Provider_INN">
+    <End Role="INN" Type="Self.INN" Multiplicity="1" />
+    <End Role="Provider" Type="Self.Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INN">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="INNId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receiver_INN">
+    <End Role="INN" Type="Self.INN" Multiplicity="1" />
+    <End Role="Receiver" Type="Self.Receiver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INN">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Receiver">
+        <PropertyRef Name="INNId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductClass1">
+    <End Role="ProductClass" Type="Self.ProductClass" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductGroup">
+    <End Role="ProductGroup" Type="Self.ProductGroup" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductArrival_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductArrival" Type="Self.ProductArrival" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductArrival">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductConsumption_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductConsumption" Type="Self.ProductConsumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductConsumption">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductArrival_Provider">
+    <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
+    <End Role="ProductArrival" Type="Self.ProductArrival" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductArrival">
+        <PropertyRef Name="ProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductConsumption_Receiver">
+    <End Role="Receiver" Type="Self.Receiver" Multiplicity="1" />
+    <End Role="ProductConsumption" Type="Self.ProductConsumption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receiver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductConsumption">
+        <PropertyRef Name="ReceiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="menshakova_inventoryControlEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="EmploymentHistory" EntityType="Self.EmploymentHistory" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" />
+    <EntitySet Name="INN" EntityType="Self.INN" />
+    <EntitySet Name="MaterialLiability" EntityType="Self.MaterialLiability" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductArrival" EntityType="Self.ProductArrival" />
+    <EntitySet Name="ProductClass" EntityType="Self.ProductClass" />
+    <EntitySet Name="ProductConsumption" EntityType="Self.ProductConsumption" />
+    <EntitySet Name="ProductGroup" EntityType="Self.ProductGroup" />
+    <EntitySet Name="Provider" EntityType="Self.Provider" />
+    <EntitySet Name="Receiver" EntityType="Self.Receiver" />
+    <EntitySet Name="SNILS" EntityType="Self.SNILS" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
+    <AssociationSet Name="FK_Employee_EmploymentHistory" Association="Self.FK_Employee_EmploymentHistory">
+      <End Role="EmploymentHistory" EntitySet="EmploymentHistory" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_INN" Association="Self.FK_Employee_INN">
+      <End Role="INN" EntitySet="INN" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_MaterialLiability" Association="Self.FK_Employee_MaterialLiability">
+      <End Role="MaterialLiability" EntitySet="MaterialLiability" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Passport" Association="Self.FK_Employee_Passport">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_SNILS" Association="Self.FK_Employee_SNILS">
+      <End Role="SNILS" EntitySet="SNILS" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductArrival_Employee" Association="Self.FK_ProductArrival_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="ProductArrival" EntitySet="ProductArrival" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductConsumption_Employee" Association="Self.FK_ProductConsumption_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="ProductConsumption" EntitySet="ProductConsumption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Provider_INN" Association="Self.FK_Provider_INN">
+      <End Role="INN" EntitySet="INN" />
+      <End Role="Provider" EntitySet="Provider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receiver_INN" Association="Self.FK_Receiver_INN">
+      <End Role="INN" EntitySet="INN" />
+      <End Role="Receiver" EntitySet="Receiver" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductClass1" Association="Self.FK_Product_ProductClass1">
+      <End Role="ProductClass" EntitySet="ProductClass" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductGroup" Association="Self.FK_Product_ProductGroup">
+      <End Role="ProductGroup" EntitySet="ProductGroup" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Unit" Association="Self.FK_Product_Unit">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductArrival_Product" Association="Self.FK_ProductArrival_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductArrival" EntitySet="ProductArrival" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductConsumption_Product" Association="Self.FK_ProductConsumption_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductConsumption" EntitySet="ProductConsumption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductArrival_Provider" Association="Self.FK_ProductArrival_Provider">
+      <End Role="Provider" EntitySet="Provider" />
+      <End Role="ProductArrival" EntitySet="ProductArrival" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductConsumption_Receiver" Association="Self.FK_ProductConsumption_Receiver">
+      <End Role="Receiver" EntitySet="Receiver" />
+      <End Role="ProductConsumption" EntitySet="ProductConsumption" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

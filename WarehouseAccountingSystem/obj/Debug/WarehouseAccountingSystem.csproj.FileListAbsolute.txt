@@ -27,3 +27,15 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\WarehouseAccountingSystem.csproj.CopyComplete
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\WarehouseAccountingSystem.exe
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\WarehouseAccountingSystem.pdb
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\WelcomePage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\WelcomePage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Menu\MainMenuPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Menu\MainMenuPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\EntityFramework.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\EntityFramework.xml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\WarehouseAccountingSystem_Content.g.cs

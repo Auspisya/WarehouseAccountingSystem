@@ -1,0 +1,95 @@
+﻿<Page x:Class="WarehouseAccountingSystem.Pages.Product.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WarehouseAccountingSystem.Pages.Product"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Товары на складе">
+
+    <Grid Background="White">
+        <TextBox Name="TxbSearch"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Text="Введите название товара для поиска..."
+                 Style="{StaticResource MaterialDesignTextBox}"
+                 Width="250"
+                 GotFocus="TxbSearch_GotFocus"
+                 CaretBrush="#8D5122"
+                 SelectionBrush="#643513"/>
+        <Button Name="BtnSearch"
+                Content="Искать"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="260, 0, 0, 0"/>
+        <Button Name="BtnRefresh"
+                Content="Обновить"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 0, 0"/>
+        <Button Name="BtnAdd"
+                Content="Добавить"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 90, 0"/>
+        <ScrollViewer VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Auto">
+        <DataGrid Name ="DGProduct"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="0, 40, 0, 0"
+                  Width="900">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding id}"
+                                    Width="50"/>
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Name}"
+                                    Width="100"/>
+                <DataGridTextColumn Header="Классификация"
+                                    Binding="{Binding ProductClass.Name}"
+                                    Width="160"/>
+                <DataGridTextColumn Header="Группа"
+                                    Binding="{Binding ProductGroup.Name}"
+                                    Width="170"/>
+                <DataGridTextColumn Header="Ед. изм."
+                                    Binding="{Binding Unit.Name}"
+                                    Width="80"/>
+                <DataGridTextColumn Header="Производитель"
+                                    Binding="{Binding Manufacturer}"
+                                    Width="130"/>
+                <DataGridTextColumn Header="Кол-во"
+                                    Binding="{Binding Quantity}"
+                                    Width="76"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnShowInfo"
+                                        Content="Подробнее"
+                                        Foreground="#8D5122"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnEditInfo"
+                                        Content="Редактировать"
+                                        Foreground="#8D5122"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnDelete"
+                                        Content="Удалить"
+                                        Foreground="#8D5122"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</Page>

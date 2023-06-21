@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WarehouseAccountingSystem.Classes;
+using WarehouseAccountingSystem.Pages;
+using WarehouseAccountingSystem.Pages.Menu;
 
 namespace WarehouseAccountingSystem
 {
@@ -23,6 +26,10 @@ namespace WarehouseAccountingSystem
         public MainWindow()
         {
             InitializeComponent();
+            Navigation.frameNav = MainFrame;
+            MainFrame.Navigate(new WelcomePage());
+            MenuNavigation.frameNav = MenuFrame;
+            MenuFrame.Navigate(new MainMenuPage());
         }
     }
 }

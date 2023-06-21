@@ -24,7 +24,7 @@
             </Border.Effect>
             <StackPanel Background="#D9AC80"
                         Orientation="Horizontal"
-                        Margin="2">
+                        Margin="0">
                 <Image Source="./Resources/boxicon.png"
                        Height="40"
                        Width="40"
@@ -33,7 +33,8 @@
                            Style="{StaticResource MaterialDesignBody1TextBlock}"
                            VerticalAlignment="Center"
                            FontSize="30"
-                           Foreground="White"/>
+                           Foreground="White"
+                           Margin="10, 0, 0, 0"/>
             </StackPanel>
         </Border>
 
