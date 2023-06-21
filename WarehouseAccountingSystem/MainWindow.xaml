@@ -22,7 +22,7 @@
                                   Color="LightGray"
                                   ShadowDepth="0"/>
             </Border.Effect>
-            <StackPanel Background="#D9AC80"
+            <StackPanel Background="#976E50"
                         Orientation="Horizontal"
                         Margin="0">
                 <Image Source="./Resources/boxicon.png"

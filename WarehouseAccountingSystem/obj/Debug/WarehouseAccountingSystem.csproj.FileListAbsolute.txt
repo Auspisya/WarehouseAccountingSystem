@@ -39,3 +39,5 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\WarehouseAccountingSystem_Content.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductInfoPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductInfoPage.baml

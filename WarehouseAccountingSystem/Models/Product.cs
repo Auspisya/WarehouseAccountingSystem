@@ -27,8 +27,8 @@ namespace WarehouseAccountingSystem.Models
         public int ProductClassId { get; set; }
         public int UnitId { get; set; }
         public string Manufacturer { get; set; }
-        public Nullable<System.DateTime> ExpirationDate { get; set; }
-        public Nullable<System.DateTime> ManufactureDate { get; set; }
+        public System.DateTime ExpirationDate { get; set; }
+        public System.DateTime ManufactureDate { get; set; }
         public double Quantity { get; set; }
         public string Description { get; set; }
     

@@ -9,6 +9,51 @@
       Title="Товары на складе">
 
     <Grid Background="White">
+        <DataGrid Name ="DGProduct"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Margin="0, 40, 0, 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                        Binding="{Binding Id}"
+                                        Width="50"/>
+                <DataGridTextColumn Header="Название"
+                                        Binding="{Binding Name}"
+                                        Width="*"/>
+                <DataGridTextColumn Header="Ед. изм."
+                                        Binding="{Binding Unit.Name}"
+                                        Width="85"/>
+                <DataGridTextColumn Header="Производитель"
+                                        Binding="{Binding Manufacturer}"
+                                        Width="140"/>
+                <DataGridTextColumn Header="Кол-во"
+                                        Binding="{Binding Quantity}"
+                                        Width="76"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnShowInfo"
+                                            Click="BtnShowInfo_Click"
+                                            Content="Подробнее"
+                                            Foreground="#8D5122"
+                                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnEditInfo"
+                                            Click="BtnEditInfo_Click"
+                                            Content="Редактировать"
+                                            Foreground="#8D5122"
+                                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnDelete"
+                                            Click="BtnDelete_Click"
+                                            Content="Удалить"
+                                            Foreground="#8D5122"
+                                            Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBox Name="TxbSearch"
                  VerticalAlignment="Top"
                  HorizontalAlignment="Left"
@@ -19,6 +64,7 @@
                  CaretBrush="#8D5122"
                  SelectionBrush="#643513"/>
         <Button Name="BtnSearch"
+                Click="BtnSearch_Click"
                 Content="Искать"
                 Foreground="#8D5122"
                 Style="{StaticResource MaterialDesignFlatButton}"
@@ -26,6 +72,7 @@
                 HorizontalAlignment="Left"
                 Margin="260, 0, 0, 0"/>
         <Button Name="BtnRefresh"
+                Click="BtnRefresh_Click"
                 Content="Обновить"
                 Foreground="#8D5122"
                 Style="{StaticResource MaterialDesignFlatButton}"
@@ -33,63 +80,12 @@
                 HorizontalAlignment="Right"
                 Margin="0, 0, 0, 0"/>
         <Button Name="BtnAdd"
+                Click="BtnAdd_Click"
                 Content="Добавить"
                 Foreground="#8D5122"
                 Style="{StaticResource MaterialDesignFlatButton}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 Margin="0, 0, 90, 0"/>
-        <ScrollViewer VerticalScrollBarVisibility="Disabled"
-                      HorizontalScrollBarVisibility="Auto">
-        <DataGrid Name ="DGProduct"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  Margin="0, 40, 0, 0"
-                  Width="900">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID"
-                                    Binding="{Binding id}"
-                                    Width="50"/>
-                <DataGridTextColumn Header="Название"
-                                    Binding="{Binding Name}"
-                                    Width="100"/>
-                <DataGridTextColumn Header="Классификация"
-                                    Binding="{Binding ProductClass.Name}"
-                                    Width="160"/>
-                <DataGridTextColumn Header="Группа"
-                                    Binding="{Binding ProductGroup.Name}"
-                                    Width="170"/>
-                <DataGridTextColumn Header="Ед. изм."
-                                    Binding="{Binding Unit.Name}"
-                                    Width="80"/>
-                <DataGridTextColumn Header="Производитель"
-                                    Binding="{Binding Manufacturer}"
-                                    Width="130"/>
-                <DataGridTextColumn Header="Кол-во"
-                                    Binding="{Binding Quantity}"
-                                    Width="76"/>
-                <DataGridTemplateColumn Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <Button Name="BtnShowInfo"
-                                        Content="Подробнее"
-                                        Foreground="#8D5122"
-                                        Style="{StaticResource MaterialDesignFlatButton}"/>
-                                <Button Name="BtnEditInfo"
-                                        Content="Редактировать"
-                                        Foreground="#8D5122"
-                                        Style="{StaticResource MaterialDesignFlatButton}"/>
-                                <Button Name="BtnDelete"
-                                        Content="Удалить"
-                                        Foreground="#8D5122"
-                                        Style="{StaticResource MaterialDesignFlatButton}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        </ScrollViewer>
     </Grid>
 </Page>
