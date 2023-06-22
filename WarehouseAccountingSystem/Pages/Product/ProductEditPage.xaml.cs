@@ -46,7 +46,6 @@ namespace WarehouseAccountingSystem.Pages.Product
             TxbManufacturer.Text = product.Manufacturer;
             TxbManufacturerCountry.Text = product.ManufacturerCountry;
             TxbName.Text = product.Name;
-            TxbQuantity.Text = product.Quantity.ToString();
             DPExpirationDate.Text = product.ExpirationDate.ToShortDateString();
             DPManufactureDate.Text = product.ManufactureDate.ToShortDateString();
             #endregion
@@ -56,15 +55,6 @@ namespace WarehouseAccountingSystem.Pages.Product
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.GoBack();
-        }
-
-        private void TxbNum_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            string pattern = @"[^0-9+-]+";
-            if (Regex.IsMatch(e.Text, pattern))
-            {
-                e.Handled = true;
-            }
         }
 
         private void Txb_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -78,7 +68,7 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbManufacturer.Text == null || TxbName.Text == null || TxbQuantity.Text == null ||
+            if (TxbManufacturer.Text == null || TxbName.Text == null ||
                 CmbProductClass.Text == null || CmbProductGroup.Text == null || CmbUnit.Text == null ||
                 DPExpirationDate.Text == null || DPManufactureDate.Text == null || TxbManufacturerCountry == null)
             {
@@ -105,7 +95,6 @@ namespace WarehouseAccountingSystem.Pages.Product
                         product.ExpirationDate = DateTime.Parse(DPExpirationDate.Text);
                         product.Name = TxbName.Text;
                         product.UnitId = (CmbUnit.SelectedItem as Unit).Id;
-                        product.Quantity = double.Parse(TxbQuantity.Text);
                         product.ProductClassId = (CmbProductClass.SelectedItem as ProductClass).Id;
                         #endregion
                         //Сохраняем данные в БД

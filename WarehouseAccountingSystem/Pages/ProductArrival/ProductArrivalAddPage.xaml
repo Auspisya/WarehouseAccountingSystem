@@ -1,0 +1,266 @@
+﻿<Page x:Class="WarehouseAccountingSystem.Pages.ProductArrival.ProductArrivalAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WarehouseAccountingSystem.Pages.ProductArrival"
+      mc:Ignorable="d" 
+      d:DesignHeight="1200" d:DesignWidth="800"
+      Title="Добавление информации о прибывшем товаре">
+
+    <Grid Background="White">
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <StackPanel HorizontalAlignment="Center">
+                <Button Name="BtnBack"
+                        Click="BtnBack_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Content="Назад"
+                        Foreground="#8D5122"
+                        FontSize="20"
+                        Margin="5, 5, 5, 5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"/>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Товар:"
+                              FontSize="20"
+                              Margin="5">
+                        <ComboBox Name="CmbProductName"
+                                  Width="476"
+                                  IsTextSearchEnabled="True"
+                                  SelectionChanged="CmbProductName_SelectionChanged"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Количество:"
+                              FontSize="20"
+                              Margin="5">
+                        <TextBox Name="TxbQuantity"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Width="250"
+                                 CaretBrush="#8D5122"
+                                 SelectionBrush="#643513"
+                                 VerticalAlignment="Top"
+                                 PreviewTextInput="TxbNum_PreviewTextInput"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Описание товара:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <TextBox Name="TxbDescription"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Width="760"
+                                 CaretBrush="#8D5122"
+                                 SelectionBrush="#643513"
+                                 VerticalAlignment="Top"
+                                 IsReadOnly="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Цена за единицу товара:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <TextBox Name="TxbUnitPrice"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Width="365"
+                                 CaretBrush="#8D5122"
+                                 SelectionBrush="#643513"
+                                 VerticalAlignment="Top"
+                                 PreviewTextInput="TxbNum_PreviewTextInput"
+                                 TextChanged="TxbUnitPrice_TextChanged"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Цена:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <TextBox Name="TxbPrice"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Width="365"
+                                 CaretBrush="#8D5122"
+                                 SelectionBrush="#643513"
+                                 VerticalAlignment="Top"
+                                 IsReadOnly="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <TextBlock Text="Добавить поставщика:"
+                           FontSize="20"
+                           Margin="5"
+                           Foreground="Black"
+                           Background="#ECD6C7"/>
+                <CheckBox Name="CBAddProvider"
+                          Click="CBAddProvider_Click"
+                          Margin="220, -30, 0, 5.5"
+                          VerticalAlignment="Bottom"
+                          HorizontalAlignment="Left"
+                          Width="20"
+                          Height="20"
+                          ToolTip="Показать"/>
+                <StackPanel Name="SPAddProvider"
+                            Height="0"
+                            Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="Наименование поставщика:"
+                                  FontSize="20"
+                                  Margin="5, 10, 5, 5">
+                            <TextBox Name="TxbProviderName"
+                                     Style="{StaticResource MaterialDesignTextBox}"
+                                     Width="760"
+                                     CaretBrush="#8D5122"
+                                     SelectionBrush="#643513"
+                                     VerticalAlignment="Top"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="Юридический адрес поставщика:"
+                                  FontSize="20"
+                                  Margin="5, 20, 5, 5">
+                            <TextBox Name="TxbProviderAddress"
+                                     Style="{StaticResource MaterialDesignTextBox}"
+                                     Width="760"
+                                     CaretBrush="#8D5122"
+                                     SelectionBrush="#643513"
+                                     VerticalAlignment="Top"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="ИНН поставщика:"
+                                  FontSize="20"
+                                  Margin="5, 20, 5, 5">
+                            <TextBox Name="TxbProviderINNNumber"
+                                     Style="{StaticResource MaterialDesignTextBox}"
+                                     Width="365"
+                                     ToolTip="Сплошные 10 цифр"
+                                     CaretBrush="#8D5122"
+                                     SelectionBrush="#643513"
+                                     VerticalAlignment="Top"
+                                     PreviewTextInput="TxbNum_PreviewTextInput"
+                                     MaxLength="10"/>
+                        </GroupBox>
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="Номер телефона поставщика:"
+                                  FontSize="20"
+                                  Height="110"
+                                  Margin="5, 20, 5, 5">
+                            <TextBox Name="TxbProviderPhoneNumber"
+                                     Style="{StaticResource MaterialDesignTextBox}"
+                                     Width="365"
+                                     ToolTip="Образец: +79000000000"
+                                     CaretBrush="#8D5122"
+                                     SelectionBrush="#643513"
+                                     VerticalAlignment="Top"
+                                     PreviewTextInput="TxbNum_PreviewTextInput"
+                                     MaxLength="12"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="Дата регистрации ИНН поставщика:"
+                                  FontSize="20"
+                                  Margin="5, 20, 5, 5">
+                            <DatePicker Name="DPProviderINNRegistrationDate"
+                                        Width="365"
+                                        BorderBrush="#643513"/>
+                        </GroupBox>
+                        <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                                  Header="ИНН поставщика зарегистрирован:"
+                                  FontSize="20"
+                                  Height="110"
+                                  Margin="5, 20, 5, 5">
+                            <TextBox Name="TxbProviderINNWhoRegistered"
+                                     ToolTip="Организация, зарегистрировшая ИНН поставщика"
+                                     Style="{StaticResource MaterialDesignTextBox}"
+                                     Width="365"
+                                     CaretBrush="#8D5122"
+                                     SelectionBrush="#643513"
+                                     VerticalAlignment="Top"/>
+                        </GroupBox>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Text="Выбрать существующего поставщика:"
+                           FontSize="20"
+                           Margin="5, 15, 5, 5"
+                           Foreground="Black"
+                           Background="#ECD6C7"/>
+                <CheckBox Name="CBChooseProvider"
+                          Click="CBChooseProvider_Click"
+                          Margin="360, -30, 0, 6"
+                          VerticalAlignment="Bottom"
+                          HorizontalAlignment="Left"
+                          Width="20"
+                          Height="20"
+                          ToolTip="Показать"/>
+                <StackPanel Name="SPChooseProvider"
+                            Height="0"
+                            Visibility="Hidden"
+                            Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Поставщик:"
+                              FontSize="20"
+                              Margin="5">
+                        <ComboBox Name="CmbProvider"
+                                  Width="760"
+                                  IsTextSearchEnabled="True"
+                                  IsEditable="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Номер договорённости:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <TextBox Name="TxbProcurationNumber"
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Width="760"
+                                 CaretBrush="#8D5122"
+                                 SelectionBrush="#643513"
+                                 VerticalAlignment="Top"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Дата прихода товара на склад:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <DatePicker Name="DPArrivalDate"
+                                    Width="365"
+                                    BorderBrush="#643513"/>
+                    </GroupBox>
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Дата заключения договорённости:"
+                              FontSize="20"
+                              Margin="5, 20, 5, 5">
+                        <DatePicker Name="DPProcurationDateOfIssue"
+                                    Width="365"
+                                    BorderBrush="#643513"/>
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
+                              Header="Работник, принявший товар на склад:"
+                              FontSize="20"
+                              Margin="5">
+                        <ComboBox Name="CmbEmployeeAccepted"
+                                  Width="760"
+                                  IsTextSearchEnabled="True"
+                                  IsEditable="True"/>
+                    </GroupBox>
+                </StackPanel>
+                <Button Name="BtnAdd"
+                        Click="BtnAdd_Click"
+                        Content="Добавить"
+                        Foreground="#8D5122"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        Margin="0, 25, 0, 0"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Cursor="Hand"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

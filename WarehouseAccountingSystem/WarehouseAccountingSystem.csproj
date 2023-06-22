@@ -97,6 +97,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ProductArrival\ProductArrivalAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProductArrival\ProductArrivalInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,6 +199,9 @@
     </Compile>
     <Compile Include="Pages\Menu\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductArrival\ProductArrivalAddPage.xaml.cs">
+      <DependentUpon>ProductArrivalAddPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductArrival\ProductArrivalInfoPage.xaml.cs">
       <DependentUpon>ProductArrivalInfoPage.xaml</DependentUpon>

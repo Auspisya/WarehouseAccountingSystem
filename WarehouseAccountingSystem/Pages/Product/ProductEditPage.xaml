@@ -27,22 +27,10 @@
                               Margin="5">
                         <TextBox Name="TxbName"
                                  Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="478"
+                                 Width="760"
                                  CaretBrush="#8D5122"
                                  SelectionBrush="#643513"
                                  VerticalAlignment="Top"/>
-                    </GroupBox>
-                    <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
-                              Header="Количество:"
-                              FontSize="20"
-                              Margin="5">
-                        <TextBox Name="TxbQuantity"
-                                 Style="{StaticResource MaterialDesignTextBox}"
-                                 Width="250"
-                                 CaretBrush="#8D5122"
-                                 SelectionBrush="#643513"
-                                 VerticalAlignment="Top"
-                                 PreviewTextInput="TxbNum_PreviewTextInput"/>
                     </GroupBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">

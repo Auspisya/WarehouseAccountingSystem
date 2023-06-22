@@ -45,7 +45,7 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbManufacturer.Text == null || TxbName.Text == null || TxbQuantity.Text == null ||
+            if (TxbManufacturer.Text == null || TxbName.Text == null ||
                 CmbProductClass.Text == null || CmbProductGroup.Text == null || CmbUnit.Text == null ||
                 DPExpirationDate.Text == null || DPManufactureDate.Text == null || TxbManufacturerCountry == null)
             {
@@ -70,7 +70,7 @@ namespace WarehouseAccountingSystem.Pages.Product
                             Name = TxbName.Text,
                             ProductClass = CmbProductClass.SelectedItem as ProductClass,
                             ProductGroup = CmbProductGroup.SelectedItem as ProductGroup,
-                            Quantity = double.Parse(TxbQuantity.Text),
+                            Quantity = 0,
                             Unit = CmbUnit.SelectedItem as Unit,
                             ManufacturerCountry = TxbManufacturerCountry.Text
                         };
@@ -95,15 +95,6 @@ namespace WarehouseAccountingSystem.Pages.Product
                         }
                     }
                 }
-            }
-        }
-
-        private void TxbNum_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            string pattern = @"[^0-9+-]+";
-            if (Regex.IsMatch(e.Text, pattern))
-            {
-                e.Handled = true;
             }
         }
 

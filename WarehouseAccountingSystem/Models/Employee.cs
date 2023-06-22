@@ -36,7 +36,8 @@ namespace WarehouseAccountingSystem.Models
         public int GenderId { get; set; }
         public int MaterialLiabilityId { get; set; }
         public int EmploymentHistoryId { get; set; }
-    
+        public string FullName => $"{Surname} {Name} {Patronymic}";
+
         public virtual EmploymentHistory EmploymentHistory { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual INN INN { get; set; }
