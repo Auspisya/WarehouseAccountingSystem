@@ -44,7 +44,7 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             {
                 TxbEmployeeAccepted.Text = productArrival.Employee.Surname + " " + productArrival.Employee.Name + " " + productArrival.Employee.Patronymic;
             }
-            TxbName.Text = productArrival.Product.Name;
+            TxbName.Text = "[" + productArrival.Product.Name + "]";
             TxbProcurationDateOfIssue.Text = productArrival.ProcurationDateOfIssue.ToShortDateString();
             TxbProcurationNumber.Text = productArrival.ProcurationNumber;
             TxbProvider.Text = productArrival.Provider.Name;

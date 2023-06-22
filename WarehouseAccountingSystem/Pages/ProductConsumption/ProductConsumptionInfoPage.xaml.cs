@@ -44,7 +44,7 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
             {
                 TxbEmployeePassed.Text = productConsumption.Employee.Surname + " " + productConsumption.Employee.Name + " " + productConsumption.Employee.Patronymic;
             }
-            TxbName.Text = productConsumption.Product.Name;
+            TxbName.Text = "[" + productConsumption.Product.Name + "]";
             TxbProcurationDateOfIssue.Text = productConsumption.ProcurationDateOfIssue.ToShortDateString();
             TxbProcurationNumber.Text = productConsumption.ProcurationNumber;
             TxbReceiver.Text = productConsumption.Receiver.Name;

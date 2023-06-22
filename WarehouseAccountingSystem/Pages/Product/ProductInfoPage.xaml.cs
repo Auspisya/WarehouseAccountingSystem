@@ -50,7 +50,7 @@ namespace WarehouseAccountingSystem.Pages.Product
                 TxbManufactureDate.Text = product.ManufactureDate.ToShortDateString();
             }
             TxbManufacturer.Text = product.Manufacturer;
-            TxbName.Text = product.Name;
+            TxbName.Text = "[" + product.Name + "]";
             TxbProductClass.Text = product.ProductClass.Name;
             TxbProductGroup.Text = product.ProductGroup.Name;
             TxbQuantity.Text = product.Quantity.ToString();

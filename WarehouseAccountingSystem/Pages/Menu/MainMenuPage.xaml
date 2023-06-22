@@ -48,6 +48,24 @@
                     Расход товара <LineBreak/> со склада
                 </TextBlock>
             </Button>
+            <Button Name="BtnProviderPage"
+                    Click="BtnProviderPage_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Content="Поставщики"
+                    Foreground="#8D5122"
+                    FontSize="20"
+                    Margin="0, 0, 0, 5" 
+                    Height="40"
+                    Cursor="Hand"/>
+            <Button Name="BtnReceiverPage"
+                    Click="BtnReceiverPage_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Content="Получатели товара"
+                    Foreground="#8D5122"
+                    FontSize="20"
+                    Margin="0, 0, 0, 5" 
+                    Height="40"
+                    Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Page>

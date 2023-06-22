@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\App.xaml
-131636214037
+151203145273
 2-1223955081
-40-1534515023
+422107312125
 22204551078
-MainWindow.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\ProductConsumption\ProductConsumptionAddPage.xaml;Pages\ProductConsumption\ProductConsumptionInfoPage.xaml;Pages\ProductConsumption\ProductConsumptionPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\WelcomePage.xaml;
+MainWindow.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\ProductConsumption\ProductConsumptionAddPage.xaml;Pages\ProductConsumption\ProductConsumptionInfoPage.xaml;Pages\ProductConsumption\ProductConsumptionPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\Provider\ProviderInfoPage.xaml;Pages\Provider\ProviderPage.xaml;Pages\WelcomePage.xaml;
 
 False
 

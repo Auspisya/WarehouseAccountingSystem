@@ -74,7 +74,7 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                         {
                             Models.ProductArrival productArrival = new Models.ProductArrival()
                             {
-                                Provider = CmbProvider.SelectedItem as Provider,
+                                Provider = CmbProvider.SelectedItem as Models.Provider,
                                 Product = CmbProductName.SelectedItem as Models.Product,
                                 ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
                                 Employee = CmbEmployeeAccepted.SelectedItem as Employee,
@@ -134,7 +134,7 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                                 WhoRegistered = TxbProviderINNWhoRegistered.Text
                             };
                             
-                            Provider provider = new Provider()
+                            Models.Provider provider = new Models.Provider()
                             {
                                 Address = TxbProviderAddress.Text,
                                 INNId = inn.Id,

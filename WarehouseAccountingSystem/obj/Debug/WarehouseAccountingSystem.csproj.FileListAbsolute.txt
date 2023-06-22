@@ -57,3 +57,7 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductConsumption\ProductConsumptionPage.baml
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductConsumption\ProductConsumptionInfoPage.g.cs
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductConsumption\ProductConsumptionInfoPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderInfoPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderInfoPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderPage.baml
