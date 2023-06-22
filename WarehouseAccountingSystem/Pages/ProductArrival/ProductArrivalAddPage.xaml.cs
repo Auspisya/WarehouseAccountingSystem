@@ -57,8 +57,8 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
         {
             if (CBChooseProvider.IsChecked == true)
             {
-                if (CmbEmployeeAccepted.Text == null || CmbProductName.Text == null || DPArrivalDate.Text == null || DPProcurationDateOfIssue.Text == null ||
-                TxbProcurationNumber.Text == null || CmbProvider.Text == null || TxbQuantity.Text == null || TxbUnitPrice.Text == null)
+                if (CmbEmployeeAccepted.Text == "" || CmbProductName.Text == "" || DPArrivalDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
+                TxbProcurationNumber.Text == "" || CmbProvider.Text == "" || TxbQuantity.Text == "" || TxbUnitPrice.Text == "")
                 {
                     MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -105,10 +105,10 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             }
             else
             {
-                if (CmbEmployeeAccepted.Text == null || CmbProductName.Text == null || DPArrivalDate.Text == null || DPProcurationDateOfIssue.Text == null ||
-                DPProviderINNRegistrationDate.Text == null || TxbProcurationNumber.Text == null || TxbProviderAddress.Text == null ||
-                TxbProviderINNNumber.Text == null || TxbProviderINNWhoRegistered.Text == null || TxbProviderName.Text == null || TxbProviderPhoneNumber.Text == null ||
-                TxbQuantity.Text == null || TxbUnitPrice.Text == null)
+                if (CmbEmployeeAccepted.Text == "" || CmbProductName.Text == "" || DPArrivalDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
+                DPProviderINNRegistrationDate.Text == "" || TxbProcurationNumber.Text == "" || TxbProviderAddress.Text == "" ||
+                TxbProviderINNNumber.Text == "" || TxbProviderINNWhoRegistered.Text == "" || TxbProviderName.Text == "" || TxbProviderPhoneNumber.Text == "" ||
+                TxbQuantity.Text == "" || TxbUnitPrice.Text == "")
                 {
                     MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -153,6 +153,11 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                             DBConnection.DBConnect.Provider.Add(provider);
                             DBConnection.DBConnect.ProductArrival.Add(productArrival);
                             DBConnection.DBConnect.SaveChanges();
+                            var productId = CmbProductName.SelectedItem as Models.Product;
+                            menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
+                            var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
+                            product.Quantity = product.Quantity + double.Parse(TxbQuantity.Text);
+                            context.SaveChanges();
                             MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                             Navigation.frameNav.GoBack();
                         }
@@ -174,9 +179,16 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
 
         private void TxbUnitPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
-            double unitPrice = double.Parse(TxbUnitPrice.Text);
-            double price = double.Parse(TxbQuantity.Text) * unitPrice;
-            TxbPrice.Text = price.ToString();
+            if (TxbUnitPrice.Text == "")
+            {
+                TxbPrice.Text = "";
+            }
+            else 
+            {
+                double unitPrice = double.Parse(TxbUnitPrice.Text);
+                double price = double.Parse(TxbQuantity.Text) * unitPrice;
+                TxbPrice.Text = price.ToString();
+            }  
         }
 
         private void CBAddProvider_Click(object sender, RoutedEventArgs e)

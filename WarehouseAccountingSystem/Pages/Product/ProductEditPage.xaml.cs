@@ -68,9 +68,9 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbManufacturer.Text == null || TxbName.Text == null ||
-                CmbProductClass.Text == null || CmbProductGroup.Text == null || CmbUnit.Text == null ||
-                DPExpirationDate.Text == null || DPManufactureDate.Text == null || TxbManufacturerCountry == null)
+            if (TxbManufacturer.Text == "" || TxbName.Text == "" ||
+                CmbProductClass.Text == "" || CmbProductGroup.Text == "" || CmbUnit.Text == "" ||
+                DPExpirationDate.Text == "" || DPManufactureDate.Text == "" || TxbManufacturerCountry.Text == "")
             {
                 MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
