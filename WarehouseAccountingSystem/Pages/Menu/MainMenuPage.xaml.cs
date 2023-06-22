@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Pages.Product;
+using WarehouseAccountingSystem.Pages.ProductArrival;
 
 namespace WarehouseAccountingSystem.Pages.Menu
 {
@@ -30,6 +31,16 @@ namespace WarehouseAccountingSystem.Pages.Menu
         private void BtnProductPage_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.Navigate(new ProductPage());
+        }
+
+        private void BtnProductArrivalPage_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.frameNav.Navigate(new ProductArrivalPage());
+        }
+
+        private void BtnProductConsumptionPage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

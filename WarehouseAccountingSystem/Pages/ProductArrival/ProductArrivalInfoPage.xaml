@@ -1,0 +1,107 @@
+﻿<Page x:Class="WarehouseAccountingSystem.Pages.ProductArrival.ProductArrivalInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WarehouseAccountingSystem.Pages.ProductArrival"
+      mc:Ignorable="d" 
+      d:DesignHeight="1100" d:DesignWidth="800"
+      Title="Информация о прибывшем товаре">
+
+    <Grid Background="White">
+        <ScrollViewer>
+            <StackPanel>
+                <Border CornerRadius="20"
+                        Background="#876146"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Width="800"
+                        Margin="5,5,5,5">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20"
+                                          Color="LightGray"
+                                          ShadowDepth="0"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="6"
+                                HorizontalAlignment="Center">
+                        <TextBlock Name="TxbName"
+                                   Foreground="White"
+                                   Text="[Название]"
+                                   TextAlignment="Center"
+                                   FontSize="25"
+                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel Margin="5">
+                    <GroupBox Header="Описание:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbDescription"
+                                   TextWrapping="Wrap"/>
+                    </GroupBox>
+                    <GroupBox Header="Единица измерения:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbUnit"/>
+                    </GroupBox>
+                    <GroupBox Header="Прибывшее количество:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbArrivalQuantity"/>
+                    </GroupBox>
+                    <GroupBox Header="Поставщик:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbProvider"/>
+                    </GroupBox>
+                    <GroupBox Header="Номер договорённости:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbProcurationNumber"/>
+                    </GroupBox>
+                    <GroupBox Header="Дата заключения договорённости:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbProcurationDateOfIssue"/>
+                    </GroupBox>
+                    <GroupBox Header="Сотрудник, принявший товар:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbEmployeeAccepted"/>
+                    </GroupBox>
+                    <GroupBox Header="Дата прихода товара на склад:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbArrivalDate"/>
+                    </GroupBox>
+                </StackPanel>
+                <Button Name="BtnBack"
+                        Click="BtnBack_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Foreground="#8D5122"
+                        Content="Назад"
+                        FontSize="20"
+                        Margin="5, 5, 5, 5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

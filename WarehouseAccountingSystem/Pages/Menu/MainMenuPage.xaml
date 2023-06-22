@@ -24,6 +24,30 @@
                     Margin="0, 0, 0, 5" 
                     Height="40"
                     Cursor="Hand"/>
+            <Button Name="BtnProductArrivalPage"
+                    Click="BtnProductArrivalPage_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Foreground="#8D5122"
+                    FontSize="20"
+                    Margin="0, 0, 0, 5" 
+                    Height="60"
+                    Cursor="Hand">
+                <TextBlock TextAlignment="Center">
+                    Приход товара <LineBreak/> на склад
+                </TextBlock>
+            </Button>
+            <Button Name="BtnProductConsumptionPage"
+                    Click="BtnProductConsumptionPage_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Foreground="#8D5122"
+                    FontSize="20"
+                    Margin="0, 0, 0, 5" 
+                    Height="60"
+                    Cursor="Hand">
+                <TextBlock TextAlignment="Center">
+                    Расход товара <LineBreak/> со склада
+                </TextBlock>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

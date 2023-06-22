@@ -41,13 +41,8 @@ namespace WarehouseAccountingSystem.Pages.Product
                 if (TxbSearch.Text != "")
                 {
                     string searchString = TxbSearch.Text.ToLower();
-
                     var itemsList = DBConnection.DBConnect.Product.ToList();
-
-                    //Ищем совпадения в таблице по фамилии
                     var searchResults = itemsList.Where(item => item.Name.ToLower().Contains(searchString)).ToList();
-
-                    //Заполняем таблицу записями, где есть совпадения
                     DGProduct.ItemsSource = searchResults.ToList();
                 }
                 else
@@ -84,7 +79,29 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Вы точно хотите удалить данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
 
+            }
+            else
+            {
+                try
+                {
+                    for (int i = 0; i < DGProduct.SelectedItems.Count; i++)
+                    {
+                        Models.Product product = DGProduct.SelectedItems[i] as Models.Product;
+                        DBConnection.DBConnect.Product.Remove(product);
+                    }
+                    DBConnection.DBConnect.SaveChanges();
+                    MessageBox.Show("Данные успешно удалены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DGProduct.ItemsSource = null;
+                    DGProduct.ItemsSource = DBConnection.DBConnect.Product.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "Критическая обработка");
+                }
+            }
         }
     }
 }

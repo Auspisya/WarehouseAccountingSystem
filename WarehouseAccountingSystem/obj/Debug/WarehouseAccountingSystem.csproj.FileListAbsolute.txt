@@ -45,3 +45,7 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductAddPage.baml
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductEditPage.g.cs
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductEditPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductArrival\ProductArrivalPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductArrival\ProductArrivalPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductArrival\ProductArrivalInfoPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\ProductArrival\ProductArrivalInfoPage.baml
