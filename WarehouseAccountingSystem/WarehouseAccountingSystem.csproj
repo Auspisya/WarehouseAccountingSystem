@@ -113,6 +113,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ProductConsumption\ProductConsumptionInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProductConsumption\ProductConsumptionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +223,9 @@
     </Compile>
     <Compile Include="Pages\ProductConsumption\ProductConsumptionAddPage.xaml.cs">
       <DependentUpon>ProductConsumptionAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductConsumption\ProductConsumptionInfoPage.xaml.cs">
+      <DependentUpon>ProductConsumptionInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductConsumption\ProductConsumptionPage.xaml.cs">
       <DependentUpon>ProductConsumptionPage.xaml</DependentUpon>

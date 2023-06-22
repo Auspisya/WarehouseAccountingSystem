@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Models;
+using WarehouseAccountingSystem.Pages.ProductArrival;
 
 namespace WarehouseAccountingSystem.Pages.ProductConsumption
 {
@@ -31,7 +32,7 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
 
         private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProductConsumptionInfoPage((sender as Button).DataContext as Models.ProductConsumption));
         }
 
         private void TxbSearch_GotFocus(object sender, RoutedEventArgs e)
