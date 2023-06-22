@@ -25,7 +25,7 @@
                                         Width="85"/>
                 <DataGridTextColumn Header="Производитель"
                                         Binding="{Binding Manufacturer}"
-                                        Width="140"/>
+                                        Width="300"/>
                 <DataGridTextColumn Header="Кол-во"
                                         Binding="{Binding Quantity}"
                                         Width="76"/>

@@ -79,7 +79,7 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProductEditPage((sender as Button).DataContext as Models.Product));
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

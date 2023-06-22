@@ -77,6 +77,13 @@
                         <TextBlock Text="Текст"
                                    Name="TxbManufacturer"/>
                     </GroupBox>
+                    <GroupBox Header="Страна-производитель:"
+                              FontSize="20"
+                              Margin="5"
+                              Style="{StaticResource MaterialDesignCardGroupBox}">
+                        <TextBlock Text="Текст"
+                                   Name="TxbManufacturerCountry"/>
+                    </GroupBox>
                     <GroupBox Header="Изготовлено:"
                               FontSize="20"
                               Margin="5"

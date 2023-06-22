@@ -62,6 +62,7 @@ namespace WarehouseAccountingSystem.Pages.Product
             {
                 TxbUnit.Text = product.Unit.Name + " (" + product.Unit.Description + ")";
             }
+            TxbManufacturerCountry.Text = product.ManufacturerCountry;
             #endregion
         }
 

@@ -89,11 +89,12 @@
           <Property Name="ProductGroupId" Type="int" Nullable="false" />
           <Property Name="ProductClassId" Type="int" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
-          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ExpirationDate" Type="datetime" />
           <Property Name="ManufactureDate" Type="datetime" />
           <Property Name="Quantity" Type="float" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="ManufacturerCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductArrival">
           <Key>
@@ -599,7 +600,7 @@
           <Property Name="ProductGroupId" Type="Int32" Nullable="false" />
           <Property Name="ProductClassId" Type="Int32" Nullable="false" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
           <Property Name="ManufactureDate" Type="DateTime" Precision="3" />
           <Property Name="Quantity" Type="Double" Nullable="false" />
@@ -609,6 +610,7 @@
           <NavigationProperty Name="ProductArrival" Relationship="Self.FK_ProductArrival_Product" FromRole="Product" ToRole="ProductArrival" />
           <NavigationProperty Name="ProductConsumption" Relationship="Self.FK_ProductConsumption_Product" FromRole="Product" ToRole="ProductConsumption" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ManufacturerCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductArrival">
           <Key>
@@ -1114,6 +1116,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="menshakova_inventoryControlModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ManufacturerCountry" ColumnName="ManufacturerCountry" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

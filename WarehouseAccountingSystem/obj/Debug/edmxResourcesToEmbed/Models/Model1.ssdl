@@ -84,11 +84,12 @@
     <Property Name="ProductGroupId" Type="int" Nullable="false" />
     <Property Name="ProductClassId" Type="int" Nullable="false" />
     <Property Name="UnitId" Type="int" Nullable="false" />
-    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="ExpirationDate" Type="datetime" />
     <Property Name="ManufactureDate" Type="datetime" />
     <Property Name="Quantity" Type="float" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="ManufacturerCountry" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductArrival">
     <Key>

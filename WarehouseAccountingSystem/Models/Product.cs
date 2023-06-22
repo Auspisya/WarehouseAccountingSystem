@@ -31,6 +31,7 @@ namespace WarehouseAccountingSystem.Models
         public System.DateTime ManufactureDate { get; set; }
         public double Quantity { get; set; }
         public string Description { get; set; }
+        public string ManufacturerCountry { get; set; }
     
         public virtual ProductClass ProductClass { get; set; }
         public virtual ProductGroup ProductGroup { get; set; }

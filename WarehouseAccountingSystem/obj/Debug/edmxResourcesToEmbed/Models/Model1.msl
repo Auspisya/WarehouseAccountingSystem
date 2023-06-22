@@ -86,6 +86,7 @@
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="menshakova_inventoryControlModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ManufacturerCountry" ColumnName="ManufacturerCountry" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
