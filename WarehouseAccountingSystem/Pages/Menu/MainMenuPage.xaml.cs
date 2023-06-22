@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Pages.Product;
 using WarehouseAccountingSystem.Pages.ProductArrival;
+using WarehouseAccountingSystem.Pages.ProductConsumption;
 
 namespace WarehouseAccountingSystem.Pages.Menu
 {
@@ -40,7 +41,7 @@ namespace WarehouseAccountingSystem.Pages.Menu
 
         private void BtnProductConsumptionPage_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProductConsumptionPage());
         }
     }
 }

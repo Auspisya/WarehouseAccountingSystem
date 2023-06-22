@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\App.xaml
-10-84037537
+12-1726922838
 2-1223955081
-37-1759622553
+391930613084
 22204551078
-MainWindow.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\WelcomePage.xaml;
+MainWindow.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\ProductConsumption\ProductConsumptionAddPage.xaml;Pages\ProductConsumption\ProductConsumptionPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\WelcomePage.xaml;
 
 False
 

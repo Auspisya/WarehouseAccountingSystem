@@ -14,20 +14,24 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Models;
-using WarehouseAccountingSystem.Pages.Product;
 
-namespace WarehouseAccountingSystem.Pages.ProductArrival
+namespace WarehouseAccountingSystem.Pages.ProductConsumption
 {
     /// <summary>
-    /// Логика взаимодействия для ProductArrivalPage.xaml
+    /// Логика взаимодействия для ProductConsumptionPage.xaml
     /// </summary>
-    public partial class ProductArrivalPage : Page
+    public partial class ProductConsumptionPage : Page
     {
-        public ProductArrivalPage()
+        public ProductConsumptionPage()
         {
             InitializeComponent();
-            DGProductArrival.ItemsSource = null;
-            DGProductArrival.ItemsSource = DBConnection.DBConnect.ProductArrival.ToList();
+            DGProductConsumption.ItemsSource = null;
+            DGProductConsumption.ItemsSource = DBConnection.DBConnect.ProductConsumption.ToList();
+        }
+
+        private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void TxbSearch_GotFocus(object sender, RoutedEventArgs e)
@@ -42,13 +46,13 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                 if (TxbSearch.Text != "")
                 {
                     string searchString = TxbSearch.Text.ToLower();
-                    var itemsList = DBConnection.DBConnect.ProductArrival.ToList();
+                    var itemsList = DBConnection.DBConnect.ProductConsumption.ToList();
                     var searchResults = itemsList.Where(item => item.Product.Name.ToLower().Contains(searchString)).ToList();
-                    DGProductArrival.ItemsSource = searchResults.ToList();
+                    DGProductConsumption.ItemsSource = searchResults.ToList();
                 }
                 else
                 {
-                    DGProductArrival.ItemsSource = DBConnection.DBConnect.ProductArrival.ToList();
+                    DGProductConsumption.ItemsSource = DBConnection.DBConnect.ProductConsumption.ToList();
                 }
             }
             catch (Exception)
@@ -57,20 +61,15 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             }
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            Navigation.frameNav.Navigate(new ProductArrivalAddPage());
-        }
-
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            DGProductArrival.ItemsSource = null;
-            DGProductArrival.ItemsSource = DBConnection.DBConnect.ProductArrival.ToList();
+            DGProductConsumption.ItemsSource = null;
+            DGProductConsumption.ItemsSource = DBConnection.DBConnect.ProductConsumption.ToList();
         }
 
-        private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.frameNav.Navigate(new ProductArrivalInfoPage((sender as Button).DataContext as Models.ProductArrival));
+            Navigation.frameNav.Navigate(new ProductConsumptionAddPage());
         }
     }
 }

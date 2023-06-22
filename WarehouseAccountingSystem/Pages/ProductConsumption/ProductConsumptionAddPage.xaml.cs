@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -14,31 +15,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Models;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace WarehouseAccountingSystem.Pages.ProductArrival
+namespace WarehouseAccountingSystem.Pages.ProductConsumption
 {
     /// <summary>
-    /// Логика взаимодействия для ProductArrivalAddPage.xaml
+    /// Логика взаимодействия для ProductConsumptionAddPage.xaml
     /// </summary>
-    public partial class ProductArrivalAddPage : Page
+    public partial class ProductConsumptionAddPage : Page
     {
-        public ProductArrivalAddPage()
+        public ProductConsumptionAddPage()
         {
             InitializeComponent();
-            CmbEmployeeAccepted.DisplayMemberPath = "FullName";
-            CmbEmployeeAccepted.SelectedValuePath = "Id";
-            CmbEmployeeAccepted.ItemsSource = DBConnection.DBConnect.Employee.ToList();
+            CmbEmployeePassed.DisplayMemberPath = "FullName";
+            CmbEmployeePassed.SelectedValuePath = "Id";
+            CmbEmployeePassed.ItemsSource = DBConnection.DBConnect.Employee.ToList();
             CmbProductName.DisplayMemberPath = "Name";
             CmbProductName.SelectedValuePath = "Id";
             CmbProductName.ItemsSource = DBConnection.DBConnect.Product.ToList();
-            CmbProvider.DisplayMemberPath = "Name";
-            CmbProvider.SelectedValuePath = "Id";
-            CmbProvider.ItemsSource = DBConnection.DBConnect.Provider.ToList();
+            CmbReceiver.DisplayMemberPath = "Name";
+            CmbReceiver.SelectedValuePath = "Id";
+            CmbReceiver.ItemsSource = DBConnection.DBConnect.Receiver.ToList();
         }
+
         private void TxbNum_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             string pattern = @"[^0-9+-]+";
@@ -55,10 +55,10 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (CBChooseProvider.IsChecked == true)
+            if (CBChooseReceiver.IsChecked == true)
             {
-                if (CmbEmployeeAccepted.Text == "" || CmbProductName.Text == "" || DPArrivalDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
-                TxbProcurationNumber.Text == "" || CmbProvider.Text == "" || TxbQuantity.Text == "" || TxbUnitPrice.Text == "")
+                if (CmbEmployeePassed.Text == "" || CmbProductName.Text == "" || DPConsumptionDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
+                TxbProcurationNumber.Text == "" || CmbReceiver.Text == "" || TxbQuantity.Text == "" || TxbUnitPrice.Text == "")
                 {
                     MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -72,27 +72,34 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                     {
                         try
                         {
-                            Models.ProductArrival productArrival = new Models.ProductArrival()
+                            Models.ProductConsumption productConsumption = new Models.ProductConsumption()
                             {
-                                Provider = CmbProvider.SelectedItem as Provider,
+                                Receiver = CmbReceiver.SelectedItem as Receiver,
                                 Product = CmbProductName.SelectedItem as Models.Product,
-                                ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
-                                Employee = CmbEmployeeAccepted.SelectedItem as Employee,
+                                ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
+                                Employee = CmbEmployeePassed.SelectedItem as Employee,
                                 Price = decimal.Parse(TxbPrice.Text),
                                 ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
                                 ProcurationNumber = TxbProcurationNumber.Text,
                                 Quantity = double.Parse(TxbQuantity.Text),
                                 UnitPrice = decimal.Parse(TxbUnitPrice.Text)
                             };
-                            DBConnection.DBConnect.ProductArrival.Add(productArrival);
-                            DBConnection.DBConnect.SaveChanges();
                             var productId = CmbProductName.SelectedItem as Models.Product;
                             menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
                             var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
-                            product.Quantity = product.Quantity + double.Parse(TxbQuantity.Text);
-                            context.SaveChanges();
-                            MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Navigation.frameNav.GoBack();
+                            if (product.Quantity < double.Parse(TxbQuantity.Text))
+                            {
+                                MessageBox.Show("Ошибка! Количество расхода заявленного товара больше, чем товара на складе!");
+                            }
+                            else
+                            {
+                                DBConnection.DBConnect.ProductConsumption.Add(productConsumption);
+                                DBConnection.DBConnect.SaveChanges();
+                                product.Quantity = product.Quantity - double.Parse(TxbQuantity.Text);
+                                context.SaveChanges();
+                                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Navigation.frameNav.GoBack();
+                            }
                         }
                         catch (DbEntityValidationException ex)
                         {
@@ -110,9 +117,9 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             }
             else
             {
-                if (CmbEmployeeAccepted.Text == "" || CmbProductName.Text == "" || DPArrivalDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
-                DPProviderINNRegistrationDate.Text == "" || TxbProcurationNumber.Text == "" || TxbProviderAddress.Text == "" ||
-                TxbProviderINNNumber.Text == "" || TxbProviderINNWhoRegistered.Text == "" || TxbProviderName.Text == "" || TxbProviderPhoneNumber.Text == "" ||
+                if (CmbEmployeePassed.Text == "" || CmbProductName.Text == "" || DPConsumptionDate.Text == "" || DPProcurationDateOfIssue.Text == "" ||
+                DPReceiverINNRegistrationDate.Text == "" || TxbProcurationNumber.Text == "" || TxbReceiverAddress.Text == "" ||
+                TxbReceiverINNNumber.Text == "" || TxbReceiverINNWhoRegistered.Text == "" || TxbReceiverName.Text == "" || TxbReceiverPhoneNumber.Text == "" ||
                 TxbQuantity.Text == "" || TxbUnitPrice.Text == "")
                 {
                     MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -129,42 +136,49 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                         {
                             INN inn = new INN()
                             {
-                                Number = TxbProviderINNNumber.Text,
-                                RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text),
-                                WhoRegistered = TxbProviderINNWhoRegistered.Text
-                            };
-                            
-                            Provider provider = new Provider()
-                            {
-                                Address = TxbProviderAddress.Text,
-                                INNId = inn.Id,
-                                Name = TxbProviderName.Text,
-                                PhoneNumber = TxbProviderPhoneNumber.Text
+                                Number = TxbReceiverINNNumber.Text,
+                                RegistrationDate = DateTime.Parse(DPReceiverINNRegistrationDate.Text),
+                                WhoRegistered = TxbReceiverINNWhoRegistered.Text
                             };
 
-                            Models.ProductArrival productArrival = new Models.ProductArrival()
+                            Receiver receiver = new Receiver()
                             {
-                                ProviderId = provider.Id,
+                                Address = TxbReceiverAddress.Text,
+                                INNId = inn.Id,
+                                Name = TxbReceiverName.Text,
+                                PhoneNumber = TxbReceiverPhoneNumber.Text
+                            };
+
+                            Models.ProductConsumption productConsumption = new Models.ProductConsumption()
+                            {
+                                ReceiverId = receiver.Id,
                                 Product = CmbProductName.SelectedItem as Models.Product,
-                                ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
-                                Employee = CmbEmployeeAccepted.SelectedItem as Employee,
+                                ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
+                                Employee = CmbEmployeePassed.SelectedItem as Employee,
                                 Price = decimal.Parse(TxbPrice.Text),
                                 ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
                                 ProcurationNumber = TxbProcurationNumber.Text,
                                 Quantity = double.Parse(TxbQuantity.Text),
                                 UnitPrice = decimal.Parse(TxbUnitPrice.Text)
                             };
-                            DBConnection.DBConnect.INN.Add(inn);
-                            DBConnection.DBConnect.Provider.Add(provider);
-                            DBConnection.DBConnect.ProductArrival.Add(productArrival);
-                            DBConnection.DBConnect.SaveChanges();
                             var productId = CmbProductName.SelectedItem as Models.Product;
                             menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
                             var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
-                            product.Quantity = product.Quantity + double.Parse(TxbQuantity.Text);
-                            context.SaveChanges();
-                            MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Navigation.frameNav.GoBack();
+                            if (product.Quantity < double.Parse(TxbQuantity.Text))
+                            {
+                                MessageBox.Show("Ошибка! Количество расхода заявленного товара больше, чем товара на складе!");
+                            }
+                            else
+                            {
+                                DBConnection.DBConnect.INN.Add(inn);
+                                DBConnection.DBConnect.Receiver.Add(receiver);
+                                DBConnection.DBConnect.ProductConsumption.Add(productConsumption);
+                                DBConnection.DBConnect.SaveChanges();
+                                product.Quantity = product.Quantity - double.Parse(TxbQuantity.Text);
+                                context.SaveChanges();
+                                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Navigation.frameNav.GoBack();
+                            }
                         }
                         catch (DbEntityValidationException ex)
                         {
@@ -182,13 +196,61 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             }
         }
 
+        private void CBAddReceiver_Click(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            if (checkBox.IsChecked.Value)
+            {
+                SPAddReceiver.Height = 505;
+                SPAddReceiver.Visibility = Visibility.Visible;
+                SPAddReceiver.ToolTip = "Скрыть";
+                CBChooseReceiver.IsChecked = false;
+                SPChooseReceiver.Height = 0;
+                SPChooseReceiver.Visibility = Visibility.Hidden;
+                SPChooseReceiver.ToolTip = "Показать";
+            }
+            else
+            {
+                SPAddReceiver.Height = 0;
+                SPAddReceiver.Visibility = Visibility.Hidden;
+                SPAddReceiver.ToolTip = "Показать";
+            }
+        }
+
+        private void CBChooseReceiver_Click(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            if (checkBox.IsChecked.Value)
+            {
+                SPChooseReceiver.Height = 110;
+                SPChooseReceiver.Visibility = Visibility.Visible;
+                SPChooseReceiver.ToolTip = "Скрыть";
+                CBAddReceiver.IsChecked = false;
+                SPAddReceiver.Height = 0;
+                SPAddReceiver.Visibility = Visibility.Hidden;
+                SPAddReceiver.ToolTip = "Показать";
+            }
+            else
+            {
+                SPChooseReceiver.Height = 0;
+                SPChooseReceiver.Visibility = Visibility.Hidden;
+                SPChooseReceiver.ToolTip = "Показать";
+            }
+        }
+
+        private void CmbProductName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var description = (CmbProductName.SelectedItem as Models.Product).Description;
+            TxbDescription.Text = description.ToString();
+        }
+
         private void TxbUnitPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (TxbQuantity.Text == "")
             {
                 MessageBox.Show("Пожалуйста, введите количество товара");
             }
-            else 
+            else
             {
                 if (TxbUnitPrice.Text == "")
                 {
@@ -201,54 +263,6 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                     TxbPrice.Text = price.ToString();
                 }
             }
-        }
-
-        private void CBAddProvider_Click(object sender, RoutedEventArgs e)
-        {
-            var checkBox = sender as CheckBox;
-            if (checkBox.IsChecked.Value)
-            {
-                SPAddProvider.Height = 505;
-                SPAddProvider.Visibility = Visibility.Visible;
-                SPAddProvider.ToolTip = "Скрыть";
-                CBChooseProvider.IsChecked = false;
-                SPChooseProvider.Height = 0;
-                SPChooseProvider.Visibility = Visibility.Hidden;
-                SPChooseProvider.ToolTip = "Показать";
-            }
-            else
-            {
-                SPAddProvider.Height = 0;
-                SPAddProvider.Visibility = Visibility.Hidden;
-                SPAddProvider.ToolTip = "Показать";
-            }
-        }
-
-        private void CBChooseProvider_Click(object sender, RoutedEventArgs e)
-        {
-            var checkBox = sender as CheckBox;
-            if (checkBox.IsChecked.Value)
-            {
-                SPChooseProvider.Height = 110;
-                SPChooseProvider.Visibility = Visibility.Visible;
-                SPChooseProvider.ToolTip = "Скрыть";
-                CBAddProvider.IsChecked = false;
-                SPAddProvider.Height = 0;
-                SPAddProvider.Visibility = Visibility.Hidden;
-                SPAddProvider.ToolTip = "Показать";
-            }
-            else
-            {
-                SPChooseProvider.Height = 0;
-                SPChooseProvider.Visibility = Visibility.Hidden;
-                SPChooseProvider.ToolTip = "Показать";
-            }
-        }
-
-        private void CmbProductName_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var description = (CmbProductName.SelectedItem as Models.Product).Description;
-            TxbDescription.Text = description.ToString();
         }
     }
 }
