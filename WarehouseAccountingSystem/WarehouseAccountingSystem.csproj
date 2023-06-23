@@ -141,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Provider\ProviderEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Provider\ProviderInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -256,6 +260,9 @@
     </Compile>
     <Compile Include="Pages\Provider\ProviderAddPage.xaml.cs">
       <DependentUpon>ProviderAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Provider\ProviderEditPage.xaml.cs">
+      <DependentUpon>ProviderEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Provider\ProviderInfoPage.xaml.cs">
       <DependentUpon>ProviderInfoPage.xaml</DependentUpon>

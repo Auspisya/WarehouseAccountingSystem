@@ -75,7 +75,7 @@ namespace WarehouseAccountingSystem.Pages.Provider
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProviderEditPage((sender as Button).DataContext as Models.Provider));
         }
     }
 }

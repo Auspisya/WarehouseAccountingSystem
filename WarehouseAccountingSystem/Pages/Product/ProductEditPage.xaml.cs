@@ -76,7 +76,7 @@ namespace WarehouseAccountingSystem.Pages.Product
             }
             else
             {
-                if (MessageBox.Show("Вы точно хотите добавить данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                if (MessageBox.Show("Вы точно хотите редактировать данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                 {
 
                 }
@@ -97,18 +97,12 @@ namespace WarehouseAccountingSystem.Pages.Product
                         product.UnitId = (CmbUnit.SelectedItem as Unit).Id;
                         product.ProductClassId = (CmbProductClass.SelectedItem as ProductClass).Id;
                         #endregion
-                        //Сохраняем данные в БД
                         context.SaveChanges();
                         MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        //Возвращаемся обратно
                         Navigation.frameNav.GoBack();
                     }
                     catch (DbEntityValidationException ex)
                     {
-                        //MessageBox.Show(ex.Message.ToString(),
-                        //    "Критическая ошибка",
-                        //    MessageBoxButton.OK,
-                        //    MessageBoxImage.Warning);
                         foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
                         {
                             MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
