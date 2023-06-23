@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
+using WarehouseAccountingSystem.Pages.Employee;
 using WarehouseAccountingSystem.Pages.Product;
 using WarehouseAccountingSystem.Pages.ProductArrival;
 using WarehouseAccountingSystem.Pages.ProductConsumption;
@@ -54,6 +55,11 @@ namespace WarehouseAccountingSystem.Pages.Menu
         private void BtnReceiverPage_Click(object sender, RoutedEventArgs e)
         {
             Navigation.frameNav.Navigate(new ReceiverPage());
+        }
+
+        private void BtnEmployeePage_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.frameNav.Navigate(new EmployeePage());
         }
     }
 }

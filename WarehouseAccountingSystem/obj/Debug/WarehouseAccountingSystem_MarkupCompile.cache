@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\App.xaml
-21-221251417
+23-1929465713
 2-1223955081
-48-1665691713
+50116685903
 22204551078
-MainWindow.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\ProductConsumption\ProductConsumptionAddPage.xaml;Pages\ProductConsumption\ProductConsumptionInfoPage.xaml;Pages\ProductConsumption\ProductConsumptionPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\Provider\ProviderAddPage.xaml;Pages\Provider\ProviderEditPage.xaml;Pages\Provider\ProviderInfoPage.xaml;Pages\Provider\ProviderPage.xaml;Pages\Receiver\ReceiverAddPage.xaml;Pages\Receiver\ReceiverEditPage.xaml;Pages\Receiver\ReceiverInfoPage.xaml;Pages\Receiver\ReceiverPage.xaml;Pages\WelcomePage.xaml;
+MainWindow.xaml;Pages\Employee\EmployeeInfoPage.xaml;Pages\Employee\EmployeePage.xaml;Pages\Menu\MainMenuPage.xaml;Pages\ProductArrival\ProductArrivalAddPage.xaml;Pages\ProductArrival\ProductArrivalInfoPage.xaml;Pages\ProductArrival\ProductArrivalPage.xaml;Pages\ProductConsumption\ProductConsumptionAddPage.xaml;Pages\ProductConsumption\ProductConsumptionInfoPage.xaml;Pages\ProductConsumption\ProductConsumptionPage.xaml;Pages\Product\ProductAddPage.xaml;Pages\Product\ProductEditPage.xaml;Pages\Product\ProductInfoPage.xaml;Pages\Product\ProductPage.xaml;Pages\Provider\ProviderAddPage.xaml;Pages\Provider\ProviderEditPage.xaml;Pages\Provider\ProviderInfoPage.xaml;Pages\Provider\ProviderPage.xaml;Pages\Receiver\ReceiverAddPage.xaml;Pages\Receiver\ReceiverEditPage.xaml;Pages\Receiver\ReceiverInfoPage.xaml;Pages\Receiver\ReceiverPage.xaml;Pages\WelcomePage.xaml;
 
 False
 

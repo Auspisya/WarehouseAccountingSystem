@@ -58,36 +58,47 @@ namespace WarehouseAccountingSystem.Pages.Provider
             }
             else
             {
-                if (MessageBox.Show("Вы точно хотите редактировать данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                if (TxbProviderINNNumber.Text.Length < 12)
                 {
-
+                    MessageBox.Show("ИНН не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (TxbProviderPhoneNumber.Text.Length < 12)
+                {
+                    MessageBox.Show("Номер телефона не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
-                    try
+                    if (MessageBox.Show("Вы точно хотите редактировать данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                     {
-                        menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
-                        #region Берем значения из элементов управления и вносим их в базу данных
-                        var provider = context.Provider.Where(item => item.Id == providerId).FirstOrDefault();
-                        provider.Name = TxbProviderName.Text;
-                        provider.PhoneNumber = TxbProviderPhoneNumber.Text;
-                        provider.Address = TxbProviderAddress.Text;
-                        provider.INN.Number = TxbProviderINNNumber.Text;
-                        provider.INN.WhoRegistered = TxbProviderINNWhoRegistered.Text;
-                        provider.INN.RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text);
-                        #endregion
-                        context.SaveChanges();
-                        MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Navigation.frameNav.GoBack();
+
                     }
-                    catch (DbEntityValidationException ex)
+                    else
                     {
-                        foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        try
                         {
-                            MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                            foreach (DbValidationError err in validationError.ValidationErrors)
+                            menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
+                            #region Берем значения из элементов управления и вносим их в базу данных
+                            var provider = context.Provider.Where(item => item.Id == providerId).FirstOrDefault();
+                            provider.Name = TxbProviderName.Text;
+                            provider.PhoneNumber = TxbProviderPhoneNumber.Text;
+                            provider.Address = TxbProviderAddress.Text;
+                            provider.INN.Number = TxbProviderINNNumber.Text;
+                            provider.INN.WhoRegistered = TxbProviderINNWhoRegistered.Text;
+                            provider.INN.RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text);
+                            #endregion
+                            context.SaveChanges();
+                            MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Navigation.frameNav.GoBack();
+                        }
+                        catch (DbEntityValidationException ex)
+                        {
+                            foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
                             {
-                                MessageBox.Show(err.ErrorMessage + "");
+                                MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                                foreach (DbValidationError err in validationError.ValidationErrors)
+                                {
+                                    MessageBox.Show(err.ErrorMessage + "");
+                                }
                             }
                         }
                     }

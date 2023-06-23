@@ -77,7 +77,7 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
                                 Receiver = CmbReceiver.SelectedItem as Models.Receiver,
                                 Product = CmbProductName.SelectedItem as Models.Product,
                                 ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
-                                Employee = CmbEmployeePassed.SelectedItem as Employee,
+                                Employee = CmbEmployeePassed.SelectedItem as Models.Employee,
                                 Price = decimal.Parse(TxbPrice.Text),
                                 ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
                                 ProcurationNumber = TxbProcurationNumber.Text,
@@ -126,68 +126,79 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
                 }
                 else
                 {
-                    if (MessageBox.Show("Вы точно хотите добавить данные? Пожалуйста, проверьте корректность введённых данных, отредактировать в дальнейшем их будет невозможно!", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    if (TxbReceiverINNNumber.Text.Length < 12)
                     {
-
+                        MessageBox.Show("ИНН не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else if (TxbReceiverPhoneNumber.Text.Length < 12)
+                    {
+                        MessageBox.Show("Номер телефона не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
-                        try
+                        if (MessageBox.Show("Вы точно хотите добавить данные? Пожалуйста, проверьте корректность введённых данных, отредактировать в дальнейшем их будет невозможно!", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                         {
-                            INN inn = new INN()
-                            {
-                                Number = TxbReceiverINNNumber.Text,
-                                RegistrationDate = DateTime.Parse(DPReceiverINNRegistrationDate.Text),
-                                WhoRegistered = TxbReceiverINNWhoRegistered.Text
-                            };
 
-                            Models.Receiver receiver = new Models.Receiver()
-                            {
-                                Address = TxbReceiverAddress.Text,
-                                INNId = inn.Id,
-                                Name = TxbReceiverName.Text,
-                                PhoneNumber = TxbReceiverPhoneNumber.Text
-                            };
-
-                            Models.ProductConsumption productConsumption = new Models.ProductConsumption()
-                            {
-                                ReceiverId = receiver.Id,
-                                Product = CmbProductName.SelectedItem as Models.Product,
-                                ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
-                                Employee = CmbEmployeePassed.SelectedItem as Employee,
-                                Price = decimal.Parse(TxbPrice.Text),
-                                ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
-                                ProcurationNumber = TxbProcurationNumber.Text,
-                                Quantity = double.Parse(TxbQuantity.Text),
-                                UnitPrice = decimal.Parse(TxbUnitPrice.Text)
-                            };
-                            var productId = CmbProductName.SelectedItem as Models.Product;
-                            menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
-                            var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
-                            if (product.Quantity < double.Parse(TxbQuantity.Text))
-                            {
-                                MessageBox.Show("Ошибка! Количество расхода заявленного товара больше, чем товара на складе!");
-                            }
-                            else
-                            {
-                                DBConnection.DBConnect.INN.Add(inn);
-                                DBConnection.DBConnect.Receiver.Add(receiver);
-                                DBConnection.DBConnect.ProductConsumption.Add(productConsumption);
-                                DBConnection.DBConnect.SaveChanges();
-                                product.Quantity = product.Quantity - double.Parse(TxbQuantity.Text);
-                                context.SaveChanges();
-                                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                                Navigation.frameNav.GoBack();
-                            }
                         }
-                        catch (DbEntityValidationException ex)
+                        else
                         {
-                            foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                            try
                             {
-                                MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                                foreach (DbValidationError err in validationError.ValidationErrors)
+                                INN inn = new INN()
                                 {
-                                    MessageBox.Show(err.ErrorMessage + "");
+                                    Number = TxbReceiverINNNumber.Text,
+                                    RegistrationDate = DateTime.Parse(DPReceiverINNRegistrationDate.Text),
+                                    WhoRegistered = TxbReceiverINNWhoRegistered.Text
+                                };
+
+                                Models.Receiver receiver = new Models.Receiver()
+                                {
+                                    Address = TxbReceiverAddress.Text,
+                                    INNId = inn.Id,
+                                    Name = TxbReceiverName.Text,
+                                    PhoneNumber = TxbReceiverPhoneNumber.Text
+                                };
+
+                                Models.ProductConsumption productConsumption = new Models.ProductConsumption()
+                                {
+                                    ReceiverId = receiver.Id,
+                                    Product = CmbProductName.SelectedItem as Models.Product,
+                                    ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
+                                    Employee = CmbEmployeePassed.SelectedItem as Models.Employee,
+                                    Price = decimal.Parse(TxbPrice.Text),
+                                    ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
+                                    ProcurationNumber = TxbProcurationNumber.Text,
+                                    Quantity = double.Parse(TxbQuantity.Text),
+                                    UnitPrice = decimal.Parse(TxbUnitPrice.Text)
+                                };
+                                var productId = CmbProductName.SelectedItem as Models.Product;
+                                menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
+                                var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
+                                if (product.Quantity < double.Parse(TxbQuantity.Text))
+                                {
+                                    MessageBox.Show("Ошибка! Количество расхода заявленного товара больше, чем товара на складе!");
+                                }
+                                else
+                                {
+                                    DBConnection.DBConnect.INN.Add(inn);
+                                    DBConnection.DBConnect.Receiver.Add(receiver);
+                                    DBConnection.DBConnect.ProductConsumption.Add(productConsumption);
+                                    DBConnection.DBConnect.SaveChanges();
+                                    product.Quantity = product.Quantity - double.Parse(TxbQuantity.Text);
+                                    context.SaveChanges();
+                                    MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    Navigation.frameNav.GoBack();
+                                }
+                            }
+                            catch (DbEntityValidationException ex)
+                            {
+                                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                                {
+                                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                                    foreach (DbValidationError err in validationError.ValidationErrors)
+                                    {
+                                        MessageBox.Show(err.ErrorMessage + "");
+                                    }
                                 }
                             }
                         }

@@ -53,42 +53,53 @@ namespace WarehouseAccountingSystem.Pages.Provider
             }
             else
             {
-                if (MessageBox.Show("Вы точно хотите добавить данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                if (TxbProviderINNNumber.Text.Length < 12)
                 {
-
+                    MessageBox.Show("ИНН не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (TxbProviderPhoneNumber.Text.Length < 12)
+                {
+                    MessageBox.Show("Номер телефона не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {
-                    try
+                    if (MessageBox.Show("Вы точно хотите добавить данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                     {
-                        INN inn = new INN()
-                        {
-                            Number = TxbProviderINNNumber.Text,
-                            WhoRegistered = TxbProviderINNWhoRegistered.Text,
-                            RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text)
-                        };
 
-                        Models.Provider provider = new Models.Provider()
-                        {
-                            INNId = inn.Id,
-                            Address = TxbProviderAddress.Text,
-                            Name = TxbProviderName.Text,
-                            PhoneNumber = TxbProviderPhoneNumber.Text
-                        };
-                        DBConnection.DBConnect.INN.Add(inn);
-                        DBConnection.DBConnect.Provider.Add(provider);
-                        DBConnection.DBConnect.SaveChanges();
-                        MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Navigation.frameNav.GoBack();
                     }
-                    catch (DbEntityValidationException ex)
+                    else
                     {
-                        foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        try
                         {
-                            MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                            foreach (DbValidationError err in validationError.ValidationErrors)
+                            INN inn = new INN()
                             {
-                                MessageBox.Show(err.ErrorMessage + "");
+                                Number = TxbProviderINNNumber.Text,
+                                WhoRegistered = TxbProviderINNWhoRegistered.Text,
+                                RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text)
+                            };
+
+                            Models.Provider provider = new Models.Provider()
+                            {
+                                INNId = inn.Id,
+                                Address = TxbProviderAddress.Text,
+                                Name = TxbProviderName.Text,
+                                PhoneNumber = TxbProviderPhoneNumber.Text
+                            };
+                            DBConnection.DBConnect.INN.Add(inn);
+                            DBConnection.DBConnect.Provider.Add(provider);
+                            DBConnection.DBConnect.SaveChanges();
+                            MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Navigation.frameNav.GoBack();
+                        }
+                        catch (DbEntityValidationException ex)
+                        {
+                            foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                            {
+                                MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                                foreach (DbValidationError err in validationError.ValidationErrors)
+                                {
+                                    MessageBox.Show(err.ErrorMessage + "");
+                                }
                             }
                         }
                     }

@@ -77,7 +77,7 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                                 Provider = CmbProvider.SelectedItem as Models.Provider,
                                 Product = CmbProductName.SelectedItem as Models.Product,
                                 ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
-                                Employee = CmbEmployeeAccepted.SelectedItem as Employee,
+                                Employee = CmbEmployeeAccepted.SelectedItem as Models.Employee,
                                 Price = decimal.Parse(TxbPrice.Text),
                                 ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
                                 ProcurationNumber = TxbProcurationNumber.Text,
@@ -119,61 +119,72 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
                 }
                 else
                 {
-                    if (MessageBox.Show("Вы точно хотите добавить данные? Пожалуйста, проверьте корректность введённых данных, отредактировать в дальнейшем их будет невозможно!", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    if (TxbProviderINNNumber.Text.Length < 12)
                     {
-
+                        MessageBox.Show("ИНН не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else if (TxbProviderPhoneNumber.Text.Length < 12)
+                    {
+                        MessageBox.Show("Номер телефона не может быть меньше 12 символов!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
-                        try
+                        if (MessageBox.Show("Вы точно хотите добавить данные? Пожалуйста, проверьте корректность введённых данных, отредактировать в дальнейшем их будет невозможно!", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                         {
-                            INN inn = new INN()
-                            {
-                                Number = TxbProviderINNNumber.Text,
-                                RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text),
-                                WhoRegistered = TxbProviderINNWhoRegistered.Text
-                            };
-                            
-                            Models.Provider provider = new Models.Provider()
-                            {
-                                Address = TxbProviderAddress.Text,
-                                INNId = inn.Id,
-                                Name = TxbProviderName.Text,
-                                PhoneNumber = TxbProviderPhoneNumber.Text
-                            };
 
-                            Models.ProductArrival productArrival = new Models.ProductArrival()
-                            {
-                                ProviderId = provider.Id,
-                                Product = CmbProductName.SelectedItem as Models.Product,
-                                ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
-                                Employee = CmbEmployeeAccepted.SelectedItem as Employee,
-                                Price = decimal.Parse(TxbPrice.Text),
-                                ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
-                                ProcurationNumber = TxbProcurationNumber.Text,
-                                Quantity = double.Parse(TxbQuantity.Text),
-                                UnitPrice = decimal.Parse(TxbUnitPrice.Text)
-                            };
-                            DBConnection.DBConnect.INN.Add(inn);
-                            DBConnection.DBConnect.Provider.Add(provider);
-                            DBConnection.DBConnect.ProductArrival.Add(productArrival);
-                            DBConnection.DBConnect.SaveChanges();
-                            var productId = CmbProductName.SelectedItem as Models.Product;
-                            menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
-                            var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
-                            product.Quantity = product.Quantity + double.Parse(TxbQuantity.Text);
-                            context.SaveChanges();
-                            MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Navigation.frameNav.GoBack();
                         }
-                        catch (DbEntityValidationException ex)
+                        else
                         {
-                            foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                            try
                             {
-                                MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                                foreach (DbValidationError err in validationError.ValidationErrors)
+                                INN inn = new INN()
                                 {
-                                    MessageBox.Show(err.ErrorMessage + "");
+                                    Number = TxbProviderINNNumber.Text,
+                                    RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text),
+                                    WhoRegistered = TxbProviderINNWhoRegistered.Text
+                                };
+
+                                Models.Provider provider = new Models.Provider()
+                                {
+                                    Address = TxbProviderAddress.Text,
+                                    INNId = inn.Id,
+                                    Name = TxbProviderName.Text,
+                                    PhoneNumber = TxbProviderPhoneNumber.Text
+                                };
+
+                                Models.ProductArrival productArrival = new Models.ProductArrival()
+                                {
+                                    ProviderId = provider.Id,
+                                    Product = CmbProductName.SelectedItem as Models.Product,
+                                    ArrivalDate = DateTime.Parse(DPArrivalDate.Text),
+                                    Employee = CmbEmployeeAccepted.SelectedItem as Models.Employee,
+                                    Price = decimal.Parse(TxbPrice.Text),
+                                    ProcurationDateOfIssue = DateTime.Parse(DPProcurationDateOfIssue.Text),
+                                    ProcurationNumber = TxbProcurationNumber.Text,
+                                    Quantity = double.Parse(TxbQuantity.Text),
+                                    UnitPrice = decimal.Parse(TxbUnitPrice.Text)
+                                };
+                                DBConnection.DBConnect.INN.Add(inn);
+                                DBConnection.DBConnect.Provider.Add(provider);
+                                DBConnection.DBConnect.ProductArrival.Add(productArrival);
+                                DBConnection.DBConnect.SaveChanges();
+                                var productId = CmbProductName.SelectedItem as Models.Product;
+                                menshakova_inventoryControlEntities context = new menshakova_inventoryControlEntities();
+                                var product = context.Product.Where(item => item.Id == productId.Id).FirstOrDefault();
+                                product.Quantity = product.Quantity + double.Parse(TxbQuantity.Text);
+                                context.SaveChanges();
+                                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                                Navigation.frameNav.GoBack();
+                            }
+                            catch (DbEntityValidationException ex)
+                            {
+                                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                                {
+                                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                                    foreach (DbValidationError err in validationError.ValidationErrors)
+                                    {
+                                        MessageBox.Show(err.ErrorMessage + "");
+                                    }
                                 }
                             }
                         }
