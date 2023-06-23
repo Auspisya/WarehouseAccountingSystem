@@ -17,6 +17,7 @@ using WarehouseAccountingSystem.Pages.Product;
 using WarehouseAccountingSystem.Pages.ProductArrival;
 using WarehouseAccountingSystem.Pages.ProductConsumption;
 using WarehouseAccountingSystem.Pages.Provider;
+using WarehouseAccountingSystem.Pages.Receiver;
 
 namespace WarehouseAccountingSystem.Pages.Menu
 {
@@ -52,7 +53,7 @@ namespace WarehouseAccountingSystem.Pages.Menu
 
         private void BtnReceiverPage_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ReceiverPage());
         }
     }
 }

@@ -6,9 +6,78 @@
       xmlns:local="clr-namespace:WarehouseAccountingSystem.Pages.Receiver"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReceiverPage">
+      Title="Получатели товара">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <DataGrid Name ="DGReceiver"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Margin="0, 40, 0, 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding Id}"
+                                    Width="50"/>
+                <DataGridTextColumn Header="Наименование"
+                                    Binding="{Binding Name}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="ИНН"
+                                    Binding="{Binding INN.Number}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Адрес"
+                                    Binding="{Binding Address}"
+                                    Width="300"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Name="BtnShowInfo"
+                                        Click="BtnShowInfo_Click"
+                                        Content="Подробнее"
+                                        Foreground="#8D5122"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnEditInfo"
+                                        Click="BtnEditInfo_Click"
+                                        Content="Редактировать"
+                                        Foreground="#8D5122"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Name="TxbSearch"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Text="Введите наименование получателя для поиска..."
+                 Style="{StaticResource MaterialDesignTextBox}"
+                 Width="280"
+                 GotFocus="TxbSearch_GotFocus"
+                 CaretBrush="#8D5122"
+                 SelectionBrush="#643513"/>
+        <Button Name="BtnSearch"
+                Click="BtnSearch_Click"
+                Content="Искать"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="290, 0, 0, 0"/>
+        <Button Name="BtnRefresh"
+                Click="BtnRefresh_Click"
+                Content="Обновить"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 0, 0"/>
+        <Button Name="BtnAdd"
+                Click="BtnAdd_Click"
+                Content="Добавить"
+                Foreground="#8D5122"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0, 0, 90, 0"/>
     </Grid>
 </Page>

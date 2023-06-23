@@ -153,6 +153,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Receiver\ReceiverAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Receiver\ReceiverInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Receiver\ReceiverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -269,6 +281,15 @@
     </Compile>
     <Compile Include="Pages\Provider\ProviderPage.xaml.cs">
       <DependentUpon>ProviderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Receiver\ReceiverAddPage.xaml.cs">
+      <DependentUpon>ReceiverAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Receiver\ReceiverInfoPage.xaml.cs">
+      <DependentUpon>ReceiverInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Receiver\ReceiverPage.xaml.cs">
+      <DependentUpon>ReceiverPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>

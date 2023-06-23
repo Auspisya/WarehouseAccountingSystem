@@ -172,7 +172,7 @@
                                   Height="110"
                                   Margin="5, 20, 5, 5">
                             <TextBox Name="TxbReceiverINNWhoRegistered"
-                                     ToolTip="Организация, зарегистрировшая ИНН поставщика"
+                                     ToolTip="Организация, зарегистрировшая ИНН получателя"
                                      Style="{StaticResource MaterialDesignTextBox}"
                                      Width="365"
                                      CaretBrush="#8D5122"
