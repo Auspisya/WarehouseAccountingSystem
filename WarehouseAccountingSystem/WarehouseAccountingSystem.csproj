@@ -157,6 +157,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Receiver\ReceiverEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Receiver\ReceiverInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +288,9 @@
     </Compile>
     <Compile Include="Pages\Receiver\ReceiverAddPage.xaml.cs">
       <DependentUpon>ReceiverAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Receiver\ReceiverEditPage.xaml.cs">
+      <DependentUpon>ReceiverEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Receiver\ReceiverInfoPage.xaml.cs">
       <DependentUpon>ReceiverInfoPage.xaml</DependentUpon>

@@ -134,12 +134,12 @@
                             <TextBox Name="TxbReceiverINNNumber"
                                      Style="{StaticResource MaterialDesignTextBox}"
                                      Width="365"
-                                     ToolTip="Сплошные 10 цифр"
+                                     ToolTip="Сплошные 12 цифр"
                                      CaretBrush="#8D5122"
                                      SelectionBrush="#643513"
                                      VerticalAlignment="Top"
                                      PreviewTextInput="TxbNum_PreviewTextInput"
-                                     MaxLength="10"/>
+                                     MaxLength="12"/>
                         </GroupBox>
                         <GroupBox Style="{StaticResource MaterialDesignCardGroupBox}"
                                   Header="Номер телефона получателя:"

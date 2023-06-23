@@ -36,7 +36,7 @@ namespace WarehouseAccountingSystem.Pages.Receiver
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ReceiverEditPage((sender as Button).DataContext as Models.Receiver));
         }
 
         private void TxbSearch_GotFocus(object sender, RoutedEventArgs e)
@@ -46,7 +46,24 @@ namespace WarehouseAccountingSystem.Pages.Receiver
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (TxbSearch.Text != "")
+                {
+                    string searchString = TxbSearch.Text.ToLower();
+                    var itemsList = DBConnection.DBConnect.Receiver.ToList();
+                    var searchResults = itemsList.Where(item => item.Name.ToLower().Contains(searchString)).ToList();
+                    DGReceiver.ItemsSource = searchResults.ToList();
+                }
+                else
+                {
+                    DGReceiver.ItemsSource = DBConnection.DBConnect.Receiver.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Непредвиденная ошибка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -57,7 +74,7 @@ namespace WarehouseAccountingSystem.Pages.Receiver
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ReceiverAddPage());
         }
     }
 }

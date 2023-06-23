@@ -74,7 +74,7 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
                         {
                             Models.ProductConsumption productConsumption = new Models.ProductConsumption()
                             {
-                                Receiver = CmbReceiver.SelectedItem as Receiver,
+                                Receiver = CmbReceiver.SelectedItem as Models.Receiver,
                                 Product = CmbProductName.SelectedItem as Models.Product,
                                 ConsumptionDate = DateTime.Parse(DPConsumptionDate.Text),
                                 Employee = CmbEmployeePassed.SelectedItem as Employee,
@@ -141,7 +141,7 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
                                 WhoRegistered = TxbReceiverINNWhoRegistered.Text
                             };
 
-                            Receiver receiver = new Receiver()
+                            Models.Receiver receiver = new Models.Receiver()
                             {
                                 Address = TxbReceiverAddress.Text,
                                 INNId = inn.Id,
