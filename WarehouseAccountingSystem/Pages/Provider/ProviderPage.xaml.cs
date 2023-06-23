@@ -59,7 +59,7 @@ namespace WarehouseAccountingSystem.Pages.Provider
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new ProviderAddPage());
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)

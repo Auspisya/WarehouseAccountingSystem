@@ -61,3 +61,5 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderPage.g.cs
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderInfoPage.baml
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderAddPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Provider\ProviderAddPage.baml

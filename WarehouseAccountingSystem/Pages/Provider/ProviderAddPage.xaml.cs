@@ -14,28 +14,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Models;
 
-namespace WarehouseAccountingSystem.Pages.Product
+namespace WarehouseAccountingSystem.Pages.Provider
 {
     /// <summary>
-    /// Логика взаимодействия для ProductAddPage.xaml
+    /// Логика взаимодействия для ProviderAddPage.xaml
     /// </summary>
-    public partial class ProductAddPage : Page
+    public partial class ProviderAddPage : Page
     {
-        public ProductAddPage()
+        public ProviderAddPage()
         {
             InitializeComponent();
-            CmbProductClass.DisplayMemberPath = "Name";
-            CmbProductClass.SelectedValuePath = "Id";
-            CmbProductClass.ItemsSource = DBConnection.DBConnect.ProductClass.ToList();
-            CmbProductGroup.DisplayMemberPath = "Name";
-            CmbProductGroup.SelectedValuePath = "Id";
-            CmbProductGroup.ItemsSource = DBConnection.DBConnect.ProductGroup.ToList();
-            CmbUnit.DisplayMemberPath = "Name";
-            CmbUnit.SelectedValuePath = "Id";
-            CmbUnit.ItemsSource = DBConnection.DBConnect.Unit.ToList();
+        }
+
+        private void TxbNum_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            string pattern = @"[^0-9+-]+";
+            if (Regex.IsMatch(e.Text, pattern))
+            {
+                e.Handled = true;
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -45,9 +46,8 @@ namespace WarehouseAccountingSystem.Pages.Product
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (TxbManufacturer.Text == "" || TxbName.Text == "" ||
-                CmbProductClass.Text == "" || CmbProductGroup.Text == "" || CmbUnit.Text == "" ||
-                DPExpirationDate.Text == "" || DPManufactureDate.Text == "" || TxbManufacturerCountry.Text == "")
+            if (TxbProviderAddress.Text == "" || TxbProviderINNNumber.Text == "" || TxbProviderINNWhoRegistered.Text == "" ||
+                TxbProviderName.Text == "" || TxbProviderPhoneNumber.Text == "" || DPProviderINNRegistrationDate.Text == "")
             {
                 MessageBox.Show("Нужно заполнить обязательные поля!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -61,30 +61,28 @@ namespace WarehouseAccountingSystem.Pages.Product
                 {
                     try
                     {
-                        Models.Product product = new Models.Product()
+                        INN inn = new INN()
                         {
-                            Description = TxbDescription.Text,
-                            ExpirationDate = DateTime.Parse(DPExpirationDate.Text),
-                            ManufactureDate = DateTime.Parse(DPManufactureDate.Text),
-                            Manufacturer = TxbManufacturer.Text,
-                            Name = TxbName.Text,
-                            ProductClass = CmbProductClass.SelectedItem as ProductClass,
-                            ProductGroup = CmbProductGroup.SelectedItem as ProductGroup,
-                            Quantity = 0,
-                            Unit = CmbUnit.SelectedItem as Unit,
-                            ManufacturerCountry = TxbManufacturerCountry.Text
+                            Number = TxbProviderINNNumber.Text,
+                            WhoRegistered = TxbProviderINNWhoRegistered.Text,
+                            RegistrationDate = DateTime.Parse(DPProviderINNRegistrationDate.Text)
                         };
-                        DBConnection.DBConnect.Product.Add(product);
+
+                        Models.Provider provider = new Models.Provider()
+                        {
+                            INNId = inn.Id,
+                            Address = TxbProviderAddress.Text,
+                            Name = TxbProviderName.Text,
+                            PhoneNumber = TxbProviderPhoneNumber.Text
+                        };
+                        DBConnection.DBConnect.INN.Add(inn);
+                        DBConnection.DBConnect.Provider.Add(provider);
                         DBConnection.DBConnect.SaveChanges();
                         MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                         Navigation.frameNav.GoBack();
                     }
                     catch (DbEntityValidationException ex)
                     {
-                        //MessageBox.Show(ex.Message.ToString(),
-                        //    "Критическая ошибка",
-                        //    MessageBoxButton.OK,
-                        //    MessageBoxImage.Warning);
                         foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
                         {
                             MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
@@ -95,15 +93,6 @@ namespace WarehouseAccountingSystem.Pages.Product
                         }
                     }
                 }
-            }
-        }
-
-        private void Txb_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            string pattern = @"[\d\p{P}]";
-            if (Regex.IsMatch(e.Text, pattern))
-            {
-                e.Handled = true;
             }
         }
     }
