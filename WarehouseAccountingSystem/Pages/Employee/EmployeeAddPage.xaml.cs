@@ -37,16 +37,7 @@ namespace WarehouseAccountingSystem.Pages.Employee
             CmbPosition.SelectedValuePath = "Id";
             CmbPosition.ItemsSource = DBConnection.DBConnect.Position.ToList();
         }
-        private void Txb_KeyDown(object sender, KeyEventArgs e)
-        {
 
-            Regex pattern = new Regex("^[a-zA-Z]+$");
-
-            if (!pattern.IsMatch(e.Key.ToString()))
-            {
-                e.Handled = true;
-            }
-        }
         private void Txb_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             string pattern = @"[\d\p{P}]";

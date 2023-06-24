@@ -37,12 +37,34 @@ namespace WarehouseAccountingSystem.Pages.Employee
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new EmployeeEditPage((sender as Button).DataContext as Models.Employee));
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Вы точно хотите удалить данные?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+            {
 
+            }
+            else
+            {
+                try
+                {
+                    for (int i = 0; i < DGEmployee.SelectedItems.Count; i++)
+                    {
+                        Models.Employee employee = DGEmployee.SelectedItems[i] as Models.Employee;
+                        DBConnection.DBConnect.Employee.Remove(employee);
+                    }
+                    DBConnection.DBConnect.SaveChanges();
+                    MessageBox.Show("Данные успешно удалены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DGEmployee.ItemsSource = null;
+                    DGEmployee.ItemsSource = DBConnection.DBConnect.Employee.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString(), "Критическая обработка");
+                }
+            }
         }
 
         private void TxbSearch_GotFocus(object sender, RoutedEventArgs e)
