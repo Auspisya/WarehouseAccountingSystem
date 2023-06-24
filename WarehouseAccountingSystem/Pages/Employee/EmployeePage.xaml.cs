@@ -80,7 +80,7 @@ namespace WarehouseAccountingSystem.Pages.Employee
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Navigation.frameNav.Navigate(new EmployeeAddPage());
         }
     }
 }

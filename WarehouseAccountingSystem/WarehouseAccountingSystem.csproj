@@ -93,6 +93,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Employee\EmployeeAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Employee\EmployeeEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Employee\EmployeeInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,6 +256,12 @@
     </Compile>
     <Compile Include="Models\Unit.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\EmployeeAddPage.xaml.cs">
+      <DependentUpon>EmployeeAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\EmployeeEditPage.xaml.cs">
+      <DependentUpon>EmployeeEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Employee\EmployeeInfoPage.xaml.cs">
       <DependentUpon>EmployeeInfoPage.xaml</DependentUpon>
