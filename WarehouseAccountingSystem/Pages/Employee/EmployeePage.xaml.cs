@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarehouseAccountingSystem.Classes;
 using WarehouseAccountingSystem.Models;
+using WarehouseAccountingSystem.Pages.ProductConsumption;
 
 namespace WarehouseAccountingSystem.Pages.Employee
 {
@@ -31,7 +32,7 @@ namespace WarehouseAccountingSystem.Pages.Employee
 
         private void BtnShowInfo_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.frameNav.Navigate(new EmployeeInfoPage());
+            Navigation.frameNav.Navigate(new EmployeeInfoPage((sender as Button).DataContext as Models.Employee));
         }
 
         private void BtnEditInfo_Click(object sender, RoutedEventArgs e)

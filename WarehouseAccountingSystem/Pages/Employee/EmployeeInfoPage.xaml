@@ -40,6 +40,7 @@
                                Foreground="Black"
                                Background="#ECD6C7"/>
                     <CheckBox Name="CBShowGeneralInfo"
+                              Click="CBShowGeneralInfo_Click"
                               Margin="201, -30, 0, 5.5"
                               VerticalAlignment="Bottom"
                               HorizontalAlignment="Left"
@@ -55,6 +56,27 @@
                                   Style="{StaticResource MaterialDesignCardGroupBox}">
                             <TextBlock Text="Текст"
                                        Name="TxbGender"/>
+                        </GroupBox>
+                        <GroupBox Header="Должность:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbPosition"/>
+                        </GroupBox>
+                        <GroupBox Header="Дата вступления на должность:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbDateOfEntry"/>
+                        </GroupBox>
+                        <GroupBox Header="Дата вступления на должность:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbMaterialLiability"/>
                         </GroupBox>
                         <GroupBox Header="Контактный номер телефона:"
                                   FontSize="20"
@@ -84,6 +106,7 @@
                            Foreground="Black"
                            Background="#ECD6C7"/>
                     <CheckBox Name="CBShowPassportInfo"
+                              Click="CBShowPassportInfo_Click"
                               Margin="201, -30, 0, 5.5"
                               VerticalAlignment="Bottom"
                               HorizontalAlignment="Left"
@@ -134,6 +157,128 @@
                                   Style="{StaticResource MaterialDesignCardGroupBox}">
                             <TextBlock Text="Текст"
                                        Name="TxbPassportPlaceOfBirth"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <TextBlock Text="СНИЛС:"
+                           FontSize="20"
+                           Margin="5"
+                           Foreground="Black"
+                           Background="#ECD6C7"/>
+                    <CheckBox Name="CBShowSNILSInfo"
+                              Click="CBShowSNILSInfo_Click"
+                              Margin="80, -30, 0, 5.5"
+                              VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Width="20"
+                              Height="20"
+                              ToolTip="Показать"/>
+                    <StackPanel Name="SPSNILSInfo"
+                                Height="0"
+                                Visibility="Hidden">
+                        <GroupBox Header="СНИЛС:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbSNILSNumber"/>
+                        </GroupBox>
+                        <GroupBox Header="Дата регистрации СНИЛС:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbSNILSRegistrationDate"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <TextBlock Text="ИНН:"
+                           FontSize="20"
+                           Margin="5"
+                           Foreground="Black"
+                           Background="#ECD6C7"/>
+                    <CheckBox Name="CBShowINNInfo"
+                              Click="CBShowINNInfo_Click"
+                              Margin="57, -30, 0, 5.5"
+                              VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Width="20"
+                              Height="20"
+                              ToolTip="Показать"/>
+                    <StackPanel Name="SPINNInfo"
+                                Height="0"
+                                Visibility="Hidden">
+                        <GroupBox Header="ИНН:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbINNNumber"/>
+                        </GroupBox>
+                        <GroupBox Header="ИНН зарегистрирован:"
+                                  FontSize="20"
+                                  ToolTip="Организация, зарегистрировавшая ИНН"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbINNWhoRegistered"/>
+                        </GroupBox>
+                        <GroupBox Header="Дата регистрации ИНН:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbINNRegistrationDate"/>
+                        </GroupBox>
+                    </StackPanel>
+                    <TextBlock Text="Трудовая книжка:"
+                           FontSize="20"
+                           Margin="5"
+                           Foreground="Black"
+                           Background="#ECD6C7"/>
+                    <CheckBox Name="CBShowEmploymentHistoryInfo"
+                              Click="CBShowEmploymentHistoryInfo_Click"
+                              Margin="172, -30, 0, 5.5"
+                              VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Width="20"
+                              Height="20"
+                              ToolTip="Показать"/>
+                    <StackPanel Name="SPEmploymentHistoryInfo"
+                                Height="0"
+                                Visibility="Hidden">
+                        <GroupBox Header="Серия трудовой книжки:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbEHSeries"/>
+                        </GroupBox>
+                        <GroupBox Header="Номер трудовой книжки:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbEHNumber"/>
+                        </GroupBox>
+                        <GroupBox Header="Образование:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbEHEducation"/>
+                        </GroupBox>
+                        <GroupBox Header="Специальность:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbEHSpeciality"/>
+                        </GroupBox>
+                        <GroupBox Header="Специальность:"
+                                  FontSize="20"
+                                  Margin="5"
+                                  Style="{StaticResource MaterialDesignCardGroupBox}">
+                            <TextBlock Text="Текст"
+                                       Name="TxbEHRegistrationDate"/>
                         </GroupBox>
                     </StackPanel>
                 </StackPanel>

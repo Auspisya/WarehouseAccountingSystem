@@ -214,17 +214,17 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
             {
                 SPAddReceiver.Height = 505;
                 SPAddReceiver.Visibility = Visibility.Visible;
-                SPAddReceiver.ToolTip = "Скрыть";
+                CBAddReceiver.ToolTip = "Скрыть";
                 CBChooseReceiver.IsChecked = false;
                 SPChooseReceiver.Height = 0;
                 SPChooseReceiver.Visibility = Visibility.Hidden;
-                SPChooseReceiver.ToolTip = "Показать";
+                CBChooseReceiver.ToolTip = "Показать";
             }
             else
             {
                 SPAddReceiver.Height = 0;
                 SPAddReceiver.Visibility = Visibility.Hidden;
-                SPAddReceiver.ToolTip = "Показать";
+                CBAddReceiver.ToolTip = "Показать";
             }
         }
 
@@ -235,17 +235,17 @@ namespace WarehouseAccountingSystem.Pages.ProductConsumption
             {
                 SPChooseReceiver.Height = 110;
                 SPChooseReceiver.Visibility = Visibility.Visible;
-                SPChooseReceiver.ToolTip = "Скрыть";
+                CBChooseReceiver.ToolTip = "Скрыть";
                 CBAddReceiver.IsChecked = false;
                 SPAddReceiver.Height = 0;
                 SPAddReceiver.Visibility = Visibility.Hidden;
-                SPAddReceiver.ToolTip = "Показать";
+                CBAddReceiver.ToolTip = "Показать";
             }
             else
             {
                 SPChooseReceiver.Height = 0;
                 SPChooseReceiver.Visibility = Visibility.Hidden;
-                SPChooseReceiver.ToolTip = "Показать";
+                CBChooseReceiver.ToolTip = "Показать";
             }
         }
 

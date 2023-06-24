@@ -221,17 +221,17 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             {
                 SPAddProvider.Height = 505;
                 SPAddProvider.Visibility = Visibility.Visible;
-                SPAddProvider.ToolTip = "Скрыть";
+                CBAddProvider.ToolTip = "Скрыть";
                 CBChooseProvider.IsChecked = false;
                 SPChooseProvider.Height = 0;
                 SPChooseProvider.Visibility = Visibility.Hidden;
-                SPChooseProvider.ToolTip = "Показать";
+                CBChooseProvider.ToolTip = "Показать";
             }
             else
             {
                 SPAddProvider.Height = 0;
                 SPAddProvider.Visibility = Visibility.Hidden;
-                SPAddProvider.ToolTip = "Показать";
+                CBAddProvider.ToolTip = "Показать";
             }
         }
 
@@ -242,17 +242,17 @@ namespace WarehouseAccountingSystem.Pages.ProductArrival
             {
                 SPChooseProvider.Height = 110;
                 SPChooseProvider.Visibility = Visibility.Visible;
-                SPChooseProvider.ToolTip = "Скрыть";
+                CBChooseProvider.ToolTip = "Скрыть";
                 CBAddProvider.IsChecked = false;
                 SPAddProvider.Height = 0;
                 SPAddProvider.Visibility = Visibility.Hidden;
-                SPAddProvider.ToolTip = "Показать";
+                CBAddProvider.ToolTip = "Показать";
             }
             else
             {
                 SPChooseProvider.Height = 0;
                 SPChooseProvider.Visibility = Visibility.Hidden;
-                SPChooseProvider.ToolTip = "Показать";
+                CBChooseProvider.ToolTip = "Показать";
             }
         }
 
