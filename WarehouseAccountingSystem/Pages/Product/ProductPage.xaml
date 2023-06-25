@@ -43,6 +43,11 @@
                                             Content="Редактировать"
                                             Foreground="#8D5122"
                                             Style="{StaticResource MaterialDesignFlatButton}"/>
+                                <Button Name="BtnCharts"
+                                            Click="BtnCharts_Click"
+                                            Content="График"
+                                            Foreground="#8D5122"
+                                            Style="{StaticResource MaterialDesignFlatButton}"/>
                                 <Button Name="BtnDelete"
                                             Click="BtnDelete_Click"
                                             Content="Удалить"

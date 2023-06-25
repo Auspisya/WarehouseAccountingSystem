@@ -81,3 +81,12 @@ C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Employee\EmployeeAddPage.baml
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Employee\EmployeeEditPage.g.cs
 C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Employee\EmployeeEditPage.baml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.pdb
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.xml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductChartsPage.g.cs
+C:\Users\mensh\source\repos\WarehouseAccountingSystem\WarehouseAccountingSystem\obj\Debug\Pages\Product\ProductChartsPage.baml

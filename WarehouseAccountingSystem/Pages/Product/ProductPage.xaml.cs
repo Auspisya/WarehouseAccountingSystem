@@ -103,5 +103,10 @@ namespace WarehouseAccountingSystem.Pages.Product
                 }
             }
         }
+
+        private void BtnCharts_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.frameNav.Navigate(new ProductChartsPage((sender as Button).DataContext as Models.Product));
+        }
     }
 }
